@@ -3,6 +3,9 @@ body {
     background:#fff;
     z-index:1;
 }
+.fixed {
+    z-index:599999;
+}
 #adwrapper {
     position:fixed;
     bottom:0;
@@ -14,29 +17,28 @@ body {
     display:none;
 }
 #adwrapper a.boxclose {
-    position:fixed;
-    bottom:2px;
-    right:2px;
-    width:32px;
-    height:0px;
+    position:absolute;
+    top:4px;
+    right:4px;
+    width:30px;
+    height:30px;
     cursor:pointer;
-    color:#fff;
-    border:2px solid #AEAEAE;
-    border-radius:36px;
-    background:#605F61;
-    font-size:36px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size:32px;
     font-weight:bold;
     display:none;
-    line-height:0px;
-    padding:14px 6px;
-    z-index:50000;
+    color:#ddd;
+    line-height:0;
+    padding:13px 6px;
+    z-index:500000;
     text-decoration:none;
     cursor:pointer;
 }
+#adwrapper a.boxclose:hover {
+    color:#999;
+}
 #adwrapper .boxclose:before {
     content:"×";
-    margin-left:-4px;
-    line-height:.2;
     text-decoration:none;
 }
 nav.top-bar {
@@ -117,6 +119,26 @@ p.byline {
     height:0;
     clear:both;
 }
+.reverse {
+    background:#eee;
+    padding:.5em 8em 3em;
+    margin:4em 0;
+}
+.reverse h3.subheading {
+    margin-top:1em;
+}
+.reverse p, .reverse li {
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size:1.2em;
+}
+.reverse p.lead {
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size: 1.3em;
+}
+.reverse p.lead:first-letter {
+    font-size:3.5em;
+    line-height:1.05;
+}
 .top-bar, .top-bar-section ul, .top-bar-section ul li, .top-bar-section li:not(.has-form) a:not(.button) {
     background:#000;
 }
@@ -127,7 +149,7 @@ p.byline {
     padding:.5em .8em;
 }
 .top-bar-section ul li a {
-    font-family:'Open Sans', Helvetica, Arial, sans-serif !important;
+    font-family:'PT Sans', Helvetica, Arial, sans-serif !important;
     text-transform:none;
     font-weight:400;
     font-size:1em;
@@ -146,7 +168,7 @@ p.byline {
     padding-right:1em;
 }
 .top-bar .toggle-topbar.menu-icon a span {
-    font-family:'Open Sans', Helvetica, Arial, sans-serif !important;
+    font-family:'PT Sans', Helvetica, Arial, sans-serif !important;
     color:#FFFFFF;
 }
 .opener div#title, .opener div.title-below {
@@ -160,7 +182,7 @@ p.byline {
 div#title h1.title, div.title-below h1.title {
     width:100%;
     margin:18% 0 4%;
-    font-family:'Open Sans Condensed', Helvetica, Arial, sans-serif !important;
+    font-family:'PT Sans Narrow', Helvetica, Arial, sans-serif !important;
     font-weight:700;
     font-size:2.7em;
     letter-spacing:0px;
@@ -177,7 +199,7 @@ div#title h1.title, div.title-below h1.title {
 div#title h2.subtitle, div.title-below h2.subtitle {
     width:100%;
     margin:0;
-    font-family:'Open Sans Condensed', Helvetica, Arial, sans-serif !important;
+    font-family:'PT Sans Narrow', Helvetica, Arial, sans-serif !important;
     font-size:2em;
     font-weight:300;
     line-height:1;
@@ -196,11 +218,11 @@ div.title-below h2.subtitle {
     z-index:-1;
 }
 * {
-  	font-family:'Merriweather', Georgia, Times, 'Times New Roman', serif;
+  	font-family:'Noticia Text', Georgia, Times, 'Times New Roman', serif;
   	font-weight:400;
 }
 h1, h2, h3, h1 *, h2 *, h3 * {
-  	font-family:'Open Sans Condensed', Helvetica, Arial, sans-serif !important;
+  	font-family:'PT Sans Narrow', Helvetica, Arial, sans-serif !important;
   	font-weight:700;
 }
 p, .row li, .reveal-modal li {
@@ -222,7 +244,7 @@ p, .row li, .reveal-modal li {
     font-weight:700;
 }
 #credits p strong a:hover {
-    color:SteelBlue;
+    color:#004646;
 }
 #credits .row .columns p:first {
     margin-top:.1em;
@@ -238,7 +260,7 @@ p, .row li, .reveal-modal li {
     font-size:2em;
 }
 .infobox p, .infobox li, .infobox#tohelp p a {
-    font-family:'Open Sans', Helvetica, Arial, sans-serif !important;
+    font-family:'PT Sans', Helvetica, Arial, sans-serif !important;
     text-indent:0;
     line-height:1.6;
     margin-bottom:.4em;
@@ -274,7 +296,7 @@ p, .row li, .reveal-modal li {
     background:#333;
 }
 h3.subheading {
-    font-family:'Merriweather', Georgia, Times, serif;
+    font-family:'Noticia Text', Georgia, Times, serif;
     font-size:2.25em;
     font-weight:700;
     display:block;
@@ -288,7 +310,12 @@ p.lead {
   	font-size:1.15em;
   	line-height:1.7;
   	margin-bottom:1.25em;
-  	font-weight:600;
+}
+p.lead:first-letter {
+    float:left; font-size:6em;
+    line-height: .7;
+    color:#990000;
+    margin-right:.15em;
 }
 p.small {
     font-size:.7em;
@@ -297,11 +324,11 @@ p.small {
     font-weight:400;
 }
 a, a *, * a, a:visited, a:visited *, * a:visited {
-    color:SteelBlue;
+    color:#004646;
 }
 
 a:hover, * a:hover, a:hover * {
-    color:IndianRed;
+    color:#990000;
 }
 .photorow {
     margin:2em 0 4em;
@@ -337,7 +364,7 @@ a:hover, * a:hover, a:hover * {
     color:rgba(0,0,0,0.6);
     padding:.75em 0 0;
     margin:0;
-    font-family:'Open Sans', Helvetica, Arial, sans-serif;
+    font-family:'PT Sans', Helvetica, Arial, sans-serif;
     font-weight:700;
     font-style:normal;
     cursor:default; 
@@ -345,7 +372,7 @@ a:hover, * a:hover, a:hover * {
 }
 .caption span.captionhed {
     text-transform:uppercase;
-    font-family:'Open Sans', Helvetica, Arial, sans-serif;
+    font-family:'PT Sans', Helvetica, Arial, sans-serif;
     font-weight:800;
     padding-right:.5em;
 }
@@ -416,7 +443,7 @@ path {
     overflow:hidden;
 }
 #mapwrapper h2, #thecharts h2 {
-    font-family:'Merriweather', Georgia, Times, 'Times New Roman', serif!important;
+    font-family:'Noticia Text', Georgia, Times, 'Times New Roman', serif!important;
     font-size:1.5em;
     color:#888;
     text-align:center;
@@ -426,7 +453,7 @@ path {
 }
 .d3-tip p, .d3-tip p span {
     font-size:1em;
-    font-family:'Open Sans', Helvetica, Arial, sans-serif;
+    font-family:'PT Sans', Helvetica, Arial, sans-serif;
     line-height:1;
     margin-bottom:.25em;
 }
@@ -468,12 +495,12 @@ path {
     margin:3em 0;
 }
 #thecharts text {
-    font-family:'Open Sans', Helvetica, Arial, sans-serif!important;
+    font-family:'PT Sans', Helvetica, Arial, sans-serif!important;
 }
 #thecharts a {
     width:45%;
     text-align:center;
-    font-family:'Open Sans', Helvetica, Arial, sans-serif;
+    font-family:'PT Sans', Helvetica, Arial, sans-serif;
     font-size:1.3em;
     line-height:1;
     text-decoration:none!important;
@@ -548,12 +575,50 @@ path {
     background-position:center center;
     display:block;
 }
-.play_icon {
-    width:12%;
+.vid-embed-play {
+    -webkit-border-radius: .5em;
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    display:block;
     position:absolute;
-    right:5%;
     bottom:5%;
+    left:5%;
+    height:4em;
+    width:8em;
+    border:3px solid rgba(255,255,255,0.8);
+    cursor: pointer;
     pointer-events:none;
+}
+.vid-embed-play .playtext {
+    opacity:0;
+    padding-top:.2em;
+}
+.vid-embed-play .playicon {
+    opacity:1;
+}
+.vid-embed-play .playtext, .vid-embed-play .playicon {
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    display:block;
+    position: absolute;
+    top:25%;
+    text-align:center;
+    margin:0 auto;
+    width:100%;
+}
+.vid-embed-play .playicon:after {
+    content:'\25B6';
+    padding-left:.25em;
+    color:rgba(255,255,255,0.8);
+    font-size: 2.25em;
+    font-weight:700;
+}
+.vid-embed-play .playtext:after {
+    content:'Play';
+    padding-top:.5em;
+    color:rgba(255,255,255,0.8);
+    font-size: 1.8em;
+    font-weight:700;
 }
 div#footer-bar {
     background:black;
