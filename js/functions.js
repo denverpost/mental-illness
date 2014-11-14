@@ -14,10 +14,14 @@ function scrollDownTo(whereToScroll, scrollOffset) {
 }
 
 function playerCreator(embedId, playerId, divId) {
-    $(divId).animate({backgroundColor:'rgba(153,0,0,0.5)',paddingLeft:'.5em',paddingRight:'.5em'}, 300).delay(5000).animate({backgroundColor:'transparent',paddingLeft:'0',paddingRight:'0'},900);
+    $(divId).animate({backgroundColor:'rgba(153,0,0,0.4)',paddingLeft:'.5em',paddingRight:'.5em'}, 300).delay(5000).animate({backgroundColor:'transparent',paddingLeft:'0',paddingRight:'0'},900);
     OO.Player.create(embedId, playerId, {'autoplay':true});
 }
 
+function playerScroller(embedId, playerId, divId) {
+    scrollDownTo(('#' + embedId),100);
+    playerCreator(embedId, playerId, divId);
+}
 function getNodePosition(node) {
     var eTop = $(node).offset().top;
     return Math.abs(eTop - $(window).scrollTop());
@@ -50,32 +54,6 @@ $('.vid-embed').on("mouseleave", function() {
     $(this).find('.playtext').fadeTo(300, 0);
 });
 
-function fadeTitles() {
-    var s = $(window).scrollTop();
-    var t = getNodePosition('.opener.opener2');
-    var u = getNodePosition('.opener.opener3');
-    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    opacityNew = s / h;
-    opacityNewTwo = t / h;
-    opacityNewThree = u / h;
-    if (opacityNew > 1 && opacityNew < 1.1) {
-        showAd();
-    }
-    $(".opener.opener1 div#title").children().css("opacity", 1 - opacityNew);
-    $(".opener.opener2 div.title-below").children().css("opacity", 1 - opacityNewTwo * .75);
-    $(".opener.opener3 div.title-below").children().css("opacity", 1 - opacityNewThree * .75);
-    $('#name1').css("opacity", 1 - opacityNew * .9);
-    $('#name2').css("opacity", opacityNew * .9);
-}
-
-$('document').ready(function() {
-    fadeTitles();
-});
-
-$(window).scroll(function() {
-    fadeTitles();
-});
-
 $(document).ready(function() {
     $('.centergallery').slick({
         centerMode: true,
@@ -98,15 +76,27 @@ $(document).ready(function() {
 var moreAd = true;
 
 function hideAdManual() {
-    $('#adwrapper').fadeOut(200);
+    $('#adwrapper').fadeOut(300);
     $('a.boxclose').css('display', 'none');
     moreAd = false;
 }
 
 function showAd() {
     if (moreAd && $("#adwrapper").html().length > 3100) {
-        $('#adwrapper').fadeIn(300);
-        $('a.boxclose').fadeIn(300);
+        $('#adwrapper').fadeIn(400);
+        $('a.boxclose').fadeIn(400);
         moreAd = false;
     }
 }
+
+$(document).ready(function() {
+    if (($(window).scrollTop() > window.innerHeight) && moreAd) {
+        showAd();
+    }
+});
+
+$(window).scroll(function() {
+    if (($(window).scrollTop() > window.innerHeight) && moreAd) {
+        showAd();
+    }
+});
