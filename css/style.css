@@ -119,23 +119,23 @@ p.byline {
     height:0;
     clear:both;
 }
-.reverse {
-    background:#eee;
-    padding:.5em 8em 3em;
-    margin:4em 0;
+section.inset {
+    background:#f3f3f3;
+    padding:.5em 0 3em;
+    margin:4em auto;
 }
-.reverse h3.subheading {
+section.inset h3.subheading {
     margin-top:1em;
 }
-.reverse p, .reverse li {
+section.inset p, .reverse li {
     font-family: 'PT Sans', Helvetica, Arial, sans-serif;
     font-size:1.2em;
 }
-.reverse p.lead {
+section.inset p.lead {
     font-family: 'PT Sans', Helvetica, Arial, sans-serif;
     font-size: 1.3em;
 }
-.reverse p.lead:first-letter {
+section.inset p.lead:first-letter {
     font-size:3.5em;
     line-height:1.05;
 }
@@ -316,6 +316,10 @@ p.lead:first-letter {
     line-height: .7;
     color:#990000;
     margin-right:.15em;
+    margin-bottom:.25em;
+}
+p.lead + p {
+    clear:left;
 }
 p.small {
     font-size:.7em;
@@ -352,6 +356,53 @@ a:hover, * a:hover, a:hover * {
 }
 .twinphoto .photoright .caption {
     padding-right:1em;
+}
+.photogrid {
+    padding:2em 0;
+}
+.photogrid li {
+    margin-bottom:0;
+    list-style-type: none;
+}
+.gridbox {
+    margin:.25em;
+    border:1px solid #ccc;
+    padding:.5em;
+}
+.gridphoto {
+    position: relative;
+    width:100%;    
+    background-size:cover;
+    background-position: center center;
+    overflow:hidden;
+    pointer-events:none;
+}
+.gridphotospace {
+    width:100%;
+    height:0;
+    padding-bottom:100%;
+    pointer-events:none;
+}
+.gridbox p.caption {
+    opacity: 0;
+    background:#eee;
+    color:#000;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:42% 0 0;
+    text-indent:0;
+    text-align:center;
+    cursor:pointer;
+    pointer-events:none;
+}
+.gridbox:hover p.caption {
+    opacity:.80;
 }
 .centerphoto {
     width:100%;
@@ -623,13 +674,13 @@ path {
 div#footer-bar {
     background:black;
     color:white;
-    padding:.6em 0 .6em 1.6em;
+    padding:1em 1em 1.5em;
 }
 div#footer-bar ul.social {
     margin:0 auto;
     position:absolute;
     left:45%;
-    top:.5em;
+    top:1em;
 }
 div#footer-bar ul.social li {
     padding:0 .5em;

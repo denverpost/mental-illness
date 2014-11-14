@@ -23,6 +23,20 @@ function getNodePosition(node) {
     return Math.abs(eTop - $(window).scrollTop());
 }
 
+$('.gridbox').on("click", function() {
+    if ( !$(this).hasClass('expanded') ) {
+        $(this).parent('li').siblings().css('display','none');
+        $(this).parents('ul').removeClass('small-block-grid-3');
+        $(this).find('p.caption').css('display','none');
+        $(this).addClass('expanded');
+    } else {
+        $(this).parent('li').siblings().css('display','block');
+        $(this).parents('ul').addClass('small-block-grid-3');
+        $(this).find('p.caption').css('display','block');
+        $(this).removeClass('expanded');
+    }
+});
+
 $('.top-top').click(function(evt) {
     $('.toggle-topbar').click();
 });
