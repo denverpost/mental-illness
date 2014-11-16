@@ -6,6 +6,7 @@ body {
 }
 .fixed {
     z-index:599999;
+    top:-45px;
 }
 #adwrapper {
     position:fixed;

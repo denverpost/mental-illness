@@ -78,12 +78,10 @@ var titleFade = true;
 
 function fadeTitles(reverse) {
     if (reverse) {
-        $('#name1').fadeIn(400);
-        $('#name2').fadeOut(400);
+        $('.fixed').animate({top:'-45px'},250);
         titleFade = true;
     } else {
-        $('#name1').fadeOut(400);
-        $('#name2').fadeIn(400);
+        $('.fixed').animate({top:'0'},500);
         titleFade = false;
     }
 }
@@ -107,21 +105,25 @@ function showAd() {
 }
 
 $(document).ready(function() {
-    if ($(window).scrollTop() > window.innerHeight) {
-        if (moreAd) {
-            showAd();
-        }
+    if ( $(window).scrollTop() > (window.innerHeight / 2) ) {
         if (titleFade) {
             fadeTitles(false);
+        }
+    }
+    if ( $(window).scrollTop() > (window.innerHeight *2) ) {
+        if (moreAd) {
+            showAd();
         }
     }
 });
 
 $(window).scroll(function() {
-    if ($(window).scrollTop() > window.innerHeight) {
+    if ($(window).scrollTop() > (window.innerHeight * 2) ) {
         if (moreAd) {
             showAd();
         }
+    }
+    if ( $(window).scrollTop() > (window.innerHeight / 2) ) {
         if (titleFade) {
             fadeTitles(false);
         }
