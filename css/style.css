@@ -186,7 +186,7 @@ section.inset .inset-video-left {
     color:#FFFFFF;
 }
 div.title h2 {
-    margin:20% 0 4%;
+    margin:25% 0 4%;
     text-align: center;
     font-family:'Noticia Text', Helvetica, Arial, sans-serif !important;
     font-weight:700;
@@ -200,7 +200,7 @@ div.title h2 {
     z-index:-1;
 }
 div.title h1 {
-    margin:8% 0 25%;
+    margin:8% 0 35%;
     text-align: center;
     font-family:'PT Sans Narrow', Helvetica, Arial, sans-serif !important;
     font-size:2.5em;
@@ -262,14 +262,11 @@ p, .row li, .reveal-modal li {
     letter-spacing:1px;
     font-size:2em;
 }
-.infobox p, .infobox li, .infobox#tohelp p a {
+.infobox p, .infobox li     {
     font-family:'PT Sans', Helvetica, Arial, sans-serif !important;
     text-indent:0;
     line-height:1.6;
     margin-bottom:.4em;
-}
-.infobox#tohelp p {
-    margin-bottom:.6em;
 }
 #tohelp h3 {
     padding-bottom:.5em;
@@ -295,8 +292,12 @@ p, .row li, .reveal-modal li {
     border:2px solid #eee;
     width:1.4em;
     height:1.4em;
-    padding:.2em 0 0 .285em;
+    padding:.05em 0 0 .2em;
     background:#333;
+}
+.reveal-modal .close-reveal-modal:before {
+    content:"\2715";
+    text-decoration:none;
 }
 h3.subheading {
     font-family:'Noticia Text', Georgia, Times, serif;
