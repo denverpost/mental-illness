@@ -331,11 +331,13 @@ p.insetquote {
     font-style: italic;
     font-size:1.35em;
     padding:4em 3em 2em;
+    color:#777;
 }
 p.insetquote span {
     clear:both;
     text-align:right;
     display:block;
+    font-size:.9em;
 }
 p.small {
     font-size:.7em;
