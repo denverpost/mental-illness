@@ -18,7 +18,7 @@ body {
     overflow:hidden;
     display:none;
 }
-#adwrapper a.boxclose {
+#adwrapper a.boxclose, .gridbox.expanded .gridphoto a.boxclose {
     position:absolute;
     top:6px;
     right:4px;
@@ -36,10 +36,19 @@ body {
     text-decoration:none;
     cursor:pointer;
 }
+.gridbox .gridphoto a.boxclose {
+    display:none;
+}
+.gridbox.expanded .gridphoto a.boxclose {
+    color:#777;
+}
 #adwrapper a.boxclose:hover {
     color:#999;
 }
-#adwrapper .boxclose:before {
+.gridbox.expanded .gridphoto a.boxclose:hover {
+    color:#000;
+}
+#adwrapper .boxclose:before, .gridbox.expanded .gridphoto a.boxclose:before {
     content:"\2715";
     text-decoration:none;
 }
@@ -127,7 +136,7 @@ section.inset h3.subheading {
 }
 section.inset p, .reverse li {
     font-family: 'PT Sans', Helvetica, Arial, sans-serif;
-    font-size:1.2em;
+    font-size:1.25em;
 }
 section.inset p.lead {
     font-family: 'PT Sans', Helvetica, Arial, sans-serif;
@@ -139,7 +148,7 @@ section.inset p.lead:first-letter {
     margin-right:.25em;
 }
 section.inset p.caption {
-    font-size:1.1em;
+    font-size:1.05em;
 }
 section.inset .inset-video-right {
     float:right;
@@ -230,9 +239,9 @@ h1, h2, h3 {
 }
 p, .row li, .reveal-modal li {
   	color:#333;
-    font-size:1.05em;
-    line-height:1.9;
-    margin-bottom:1.5em;
+    font-size:1.15em;
+    line-height:2;
+    margin-bottom:1.6em;
     list-style:circle inside;
 }
 #credits .row {
@@ -311,7 +320,7 @@ h3.subheading {
     border-bottom:1px solid rgba(0,0,0,.3);
 }
 p.lead {
-  	font-size:1.15em;
+  	font-size:1.25em;
   	line-height:1.7;
   	margin-bottom:1.25em;
 }
@@ -319,7 +328,7 @@ p.lead:first-letter {
     float:left;
     font-size:6em;
     font-weight:700;
-    line-height: .7;
+    line-height:.75;
     color:#990000;
     margin-right:.15em;
     margin-bottom:.25em;
@@ -383,10 +392,13 @@ a:hover, * a:hover, a:hover * {
     list-style-type: none;
     padding: 0 .25em .5em;
 }
-.gridbox {
+.gridbox, .gridcenter {
     margin:.25em;
     border:1px solid #ccc;
     padding:.5em;
+}
+.gridbox.expanded .gridphoto {
+    pointer-events:auto;
 }
 .gridphoto {
     position: relative;
@@ -396,13 +408,37 @@ a:hover, * a:hover, a:hover * {
     overflow:hidden;
     pointer-events:none;
 }
+.gridphoto .gridprofile {
+    display: none;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    font-size:.85em;
+}
+.gridphoto .gridprofile h1 {
+    font-size:2em;
+    margin:15% 0 15%;
+}
+.gridphoto .gridprofile p.caption {
+    font-size:1em;
+}
+.gridbox.expanded .gridphoto .gridprofile {
+    display:block;
+}
+.gridbox.expanded .gridphoto {
+    background-image:none!important;
+}
 .gridphotospace {
     width:100%;
     height:0;
     padding-bottom:100%;
     pointer-events:none;
 }
-.gridbox p.caption {
+.gridbox p.gridcaption, .gridcenter p.gridcaption {
     opacity: 0;
     background:#eee;
     color:#000;
@@ -420,7 +456,7 @@ a:hover, * a:hover, a:hover * {
     cursor:pointer;
     pointer-events:none;
 }
-.gridbox:hover p.caption {
+.gridbox:hover p.gridcaption {
     opacity:.80;
 }
 .centerphoto {
@@ -428,8 +464,8 @@ a:hover, * a:hover, a:hover * {
     padding:0;
     margin:2em 0;
 }
-.caption {
-  	font-size:.9em;
+.caption, .gridcaption {
+  	font-size:.85em;
     line-height:1.5;
     color:rgba(0,0,0,0.6);
     padding:.75em 0 0;
@@ -769,7 +805,7 @@ div#footer-bar ul.social li {
     }
     p, .row li, .reveal-modal li {
         color:#333;
-        font-size:.95em;
+        font-size:1em;
         line-height:1.8;
         margin-bottom:1.25em;
     }
