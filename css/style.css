@@ -41,6 +41,7 @@ body {
 }
 .gridbox.expanded .gridphoto a.boxclose {
     color:#777;
+    display:block;
 }
 #adwrapper a.boxclose:hover {
     color:#999;
