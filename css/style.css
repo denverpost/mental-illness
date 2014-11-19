@@ -140,9 +140,6 @@ section.inset p.lead:first-letter {
     line-height:1.05;
     margin-right:.25em;
 }
-section.inset p.caption {
-    font-size:1.05em;
-}
 section.inset .inset-video-right {
     float:right;
     margin-right:-20%;
@@ -504,8 +501,8 @@ a:hover, * a:hover, a:hover * {
     padding:0;
     margin:2em 0;
 }
-.caption, .gridcaption {
-  	font-size:.85em;
+.caption {
+  	font-size:.95em;
     line-height:1.5;
     color:rgba(0,0,0,0.6);
     padding:.75em 0 0;
@@ -515,6 +512,9 @@ a:hover, * a:hover, a:hover * {
     font-style:normal;
     cursor:default; 
     text-indent:0;
+}
+.gridcaption {
+    font-size:.85em;
 }
 .caption span.captionhed {
     text-transform:uppercase;
