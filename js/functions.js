@@ -56,14 +56,20 @@ $('.gridbox').on("click", function() {
         $(this).parent('li').siblings().css('display','none');
         $(this).parents('ul').removeClass('small-block-grid-3');
         $(this).find('p.gridcaption').css('display','none');
+        $(this).find('.gridphotograd').css('display','block');
         $(this).addClass('expanded');
     } else {
         $(this).parent('li').siblings().css('display','block');
         $(this).parents('ul').addClass('small-block-grid-3');
         $(this).find('p.gridcaption').css('display','block');
+        $(this).find('.gridphotograd').css('display','none');
         $(this).removeClass('expanded');
     }
 });
+
+$('.gridprofile').scroll(function(){
+    $(this).siblings('.gridphotograd').animate({opacity:'0'},300);
+})
 
 $('.top-top').click(function(evt) {
     $('.toggle-topbar').click();

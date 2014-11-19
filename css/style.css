@@ -421,9 +421,12 @@ a:hover, * a:hover, a:hover * {
     height:100%;
     font-size:.85em;
 }
+.gridphoto .gridprofile .row:last-child {
+    margin-bottom:4em;
+}
 .gridphoto .gridprofile h1 {
     font-size:2em;
-    margin:15% 0 15%;
+    margin:15% 0 5%;
 }
 .gridphoto .gridprofile p.caption {
     font-size:1em;
@@ -439,6 +442,20 @@ a:hover, * a:hover, a:hover * {
     height:0;
     padding-bottom:100%;
     pointer-events:none;
+}
+.gridphotograd {
+    height:25%;
+    width:100%;
+    left:0;
+    bottom:0;
+    position:absolute;
+    background-image: -webkit-linear-gradient(top, transparent, white);
+    background-image: -moz-linear-gradient(top, transparent, white);
+    background-image: -ms-linear-gradient(top, transparent, white);
+    background-image: -o-linear-gradient(top, transparent, white);
+    display:none;
+    opacity:1;
+    z-index:99;
 }
 .gridbox p.gridcaption, .gridcenter p.gridcaption {
     opacity: 0;
@@ -694,6 +711,24 @@ a.startVideo:hover {
     margin-left:-25%;
     width:75%;
     padding-right:1.5em;
+}
+.gridprofile .inset-video-right {
+    width:66.6%;
+    margin-right:0;
+    margin-top:.5em;
+}
+.gridprofile .inset-video-left {
+    width:66.6%;
+    margin-left:0;
+    margin-top:.5em;
+}
+.gridprofile .inset-video-right .vid-embed-play .playtext,
+.gridprofile .inset-video-left .vid-embed-play .playtext {
+    top:0;
+}
+.gridprofile .inset-video-right .vid-embed-play .playicon,
+.gridprofile .inset-video-left .vid-embed-play .playicon {
+    top:-5%;
 }
 .vid-embed-wrap {
     width:100%;
