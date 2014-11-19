@@ -657,6 +657,14 @@ path {
     padding-bottom:75%;
 }
 /* video */
+#overviewvid {
+    clear:both;
+    margin-bottom:10%;
+}
+#overviewvid .row {
+    padding-top:6em;
+    padding-bottom:6em;
+}
 a.startVideo {
     border-bottom:1px solid #444;
 }
@@ -694,9 +702,6 @@ a.startVideo:hover {
     margin:0 0 .5em;
     overflow:hidden;
 }
-#videoEmbed {
-    margin:3em 0 .5em;
-}
 .vid-height-space {
     width:100%;
     height:0;
@@ -710,11 +715,13 @@ a.startVideo:hover {
     bottom:0;
     width:100%;
     height:100%;
-    background-image:url('../img/homeless-students-video-promo-2.gif');
     background-size:cover;
     background-repeat:no-repeat;
     background-position:center center;
     display:block;
+}
+.vid-embed .innerWrapper {
+    height:100%;
 }
 .vid-embed-play {
     -webkit-border-radius: .5em;
