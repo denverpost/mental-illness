@@ -131,6 +131,9 @@ section.inset p, .reverse li {
     font-family: 'PT Sans', Helvetica, Arial, sans-serif;
     font-size:1.25em;
 }
+section.inset p.caption {
+    font-size:1.05em;
+}
 section.inset p.lead {
     font-family: 'PT Sans', Helvetica, Arial, sans-serif;
     font-size: 1.3em;
@@ -537,13 +540,13 @@ a:hover, * a:hover, a:hover * {
     font-size:2em;
     margin:0 1em;
     display:block;
-    color:rgba(20,20,20,.8);
+    color:rgba(255,255,255,0.9);
     text-shadow:0px 0px 2px rgba(80,80,80,.5);
-    transform:scale(1,4);
-    -webkit-transform:scale(1,4);
-    -moz-transform:scale(1,4);
-    -ms-transform:scale(1,4);
-    -o-transform:scale(1,4);
+    transform:scale(1,8);
+    -webkit-transform:scale(1,8);
+    -moz-transform:scale(1,8);
+    -ms-transform:scale(1,8);
+    -o-transform:scale(1,8);
 }
 .centergallery button.slick-next {
     position:absolute;
@@ -780,11 +783,11 @@ div#footer-bar ul.social li {
         font-size:1.25em;
         margin:0 .5em;
         text-shadow:none;
-        transform:scale(1,3);
-        -webkit-transform:scale(1,3);
-        -moz-transform:scale(1,3);
-        -ms-transform:scale(1,3);
-        -o-transform:scale(1,3);
+        transform:scale(1,5);
+        -webkit-transform:scale(1,5);
+        -moz-transform:scale(1,5);
+        -ms-transform:scale(1,5);
+        -o-transform:scale(1,5);
     }
     .centergallery .columns {
         padding:0 0.5em;
