@@ -76,7 +76,7 @@ $(document).ready(function() {
 var moreAd = true;
 var titleFade = true;
 
-function fadeTitles(reverse) {
+function fadeNavBar(reverse) {
     if (reverse) {
         $('.fixed').animate({top:'-45px'},250);
         titleFade = true;
@@ -107,7 +107,7 @@ function showAd() {
 $(document).ready(function() {
     if ( $(window).scrollTop() > (window.innerHeight / 2) ) {
         if (titleFade) {
-            fadeTitles(false);
+            fadeNavBar(false);
         }
     }
     if ( $(window).scrollTop() > (window.innerHeight *2) ) {
@@ -115,6 +115,8 @@ $(document).ready(function() {
             showAd();
         }
     }
+    $('#fade1').animate({opacity:'1'},1400);
+    $('#fade2').delay(550).animate({opacity:'1'},1900);
 });
 
 $(window).scroll(function() {
@@ -125,9 +127,9 @@ $(window).scroll(function() {
     }
     if ( $(window).scrollTop() > (window.innerHeight / 2) ) {
         if (titleFade) {
-            fadeTitles(false);
+            fadeNavBar(false);
         }
     } else if (!titleFade) {
-        fadeTitles(true);
+        fadeNavBar(true);
     }
 });

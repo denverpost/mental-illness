@@ -53,6 +53,7 @@ body {
     content:"\2715";
     text-decoration:none;
 }
+#fade1, #fade2 { opacity:0; }
 nav.top-bar {
     z-index:99;
     box-shadow:0px 4px 5px rgba(0, 0, 0, 0.5);
