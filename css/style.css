@@ -135,13 +135,9 @@ section.inset p, .reverse li {
 section.inset p.caption {
     font-size:1.05em;
 }
-section.inset p.lead {
-    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
-    font-size: 1.3em;
-}
 section.inset p.lead:first-letter {
-    font-size:3.5em;
-    line-height:1.05;
+    font-size:3.4em;
+    line-height:1;
     margin-right:.25em;
 }
 section.inset .inset-video-right {
@@ -340,16 +336,11 @@ h3.subheading {
     width:70%;
     border-bottom:1px solid rgba(0,0,0,.3);
 }
-p.lead {
-  	font-size:1.25em;
-  	line-height:1.7;
-  	margin-bottom:1.25em;
-}
 p.lead:first-letter {
     float:left;
     font-size:6em;
     font-weight:700;
-    line-height:.75;
+    line-height:.7;
     color:#990000;
     margin-right:.15em;
     margin-bottom:.25em;
@@ -381,6 +372,9 @@ a, a *, * a, a:visited, a:visited *, * a:visited {
 
 a:hover, * a:hover, a:hover * {
     color:#990000;
+}
+.row.solo {
+    margin-bottom:4em;
 }
 .photorow {
     margin:2em 0 4em;
@@ -465,8 +459,11 @@ a:hover, * a:hover, a:hover * {
 .gridphotospace {
     width:100%;
     height:0;
-    padding-bottom:100%;
+    padding-bottom:66%;
     pointer-events:none;
+}
+.gridbox.expanded .gridphotospace {
+    padding-bottom:75%;
 }
 .gridphotograd {
     height:25%;
@@ -494,11 +491,15 @@ a:hover, * a:hover, a:hover * {
     width:100%;
     height:100%;
     margin:0;
-    padding:42% 0 0;
+    padding:22% 0 0;
     text-indent:0;
     text-align:center;
     cursor:pointer;
     pointer-events:none;
+}
+.gridcenter p.gridcaption {
+    padding-top:19%;
+    line-height: 1.3;
 }
 .gridbox:hover p.gridcaption {
     opacity:.80;
@@ -577,13 +578,16 @@ p.splainer {
     padding:0 3em;
 }
 /* video */
-#overviewvid {
+#overviewvid, #slidesoffset {
     clear:both;
     margin-bottom:10%;
 }
-#overviewvid .row {
-    padding-top:6em;
-    padding-bottom:6em;
+#overviewvid .row, #slidesoffset {
+    padding-top:10em;
+    padding-bottom:10em;
+}
+#slidesoffset {
+    margin-top:6em;
 }
 a.startVideo {
     border-bottom:1px solid #444;
@@ -758,9 +762,6 @@ div#footer-bar ul.social li {
         font-size:1em;
         line-height:1.8;
         margin-bottom:1.25em;
-    }
-    p.lead {
-        font-size:1em;
     }
     .photorow {
         margin-top:1em;

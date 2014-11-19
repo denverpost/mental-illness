@@ -29,10 +29,10 @@ function getNodePosition(node) {
     var eTop = $(node).offset().top;
     return Math.abs(eTop - $(window).scrollTop());
 }
-function isVideoVisible() {
-    var quarterHeight = $('#overviewvid').height() / 4;
-    var vidTop = $('#overviewvid').offset().top;
-    var vidBot = $('#overviewvid').offset().top + $('#overviewvid').height();
+function isVisible(element) {
+    var quarterHeight = $(element).height() / 4;
+    var vidTop = $(element).offset().top;
+    var vidBot = $(element).offset().top + $(element).height();
     var fromTop = $(window).scrollTop() + quarterHeight * 2;
     if ( fromTop > vidTop && fromTop < vidBot ) {
         return true;
@@ -41,13 +41,15 @@ function isVideoVisible() {
     }
 }
 
-function videoBackground(reverse) {
+function darkBackground(element, reverse) {
     if (!reverse) {
-        $('#overviewvid').animate({backgroundColor:'#222'}, 750);
-        $('#overviewvid p.caption').animate({color:'rgba(255,255,255,0.6)'}, 750);
+        $(element).animate({backgroundColor:'#222'}, 750);
+        $(element + ' p.caption').animate({color:'rgba(255,255,255,0.6)'}, 750);
+        $('.fixed').animate({top:'-45px'},350);
     } else {
-        $('#overviewvid').animate({backgroundColor:'#fff'}, 750);
-        $('#overviewvid p.caption').animate({color:'rgba(0,0,0,0.6)'}, 750);
+        $(element).animate({backgroundColor:'#fff'}, 750);
+        $(element + ' p.caption').animate({color:'rgba(0,0,0,0.6)'}, 750);
+        $('.fixed').animate({top:'0'},750);
     }
 }
 
@@ -106,6 +108,7 @@ $(document).ready(function() {
 var moreAd = true;
 var titleFade = true;
 var vidBack = true;
+var slideBack = true;
 
 function fadeNavBar(reverse) {
     if (reverse) {
@@ -149,9 +152,13 @@ $(document).ready(function() {
             showAd();
         }
     }
-    if ( isVideoVisible() && vidBack ) {
-        videoBackground();
+    if ( isVisible('#overviewvid') && vidBack ) {
+        darkBackground('#overviewvid',false);
         vidBack = false;
+    }
+    if ( isVisible('#slidesoffset') && slideBack ) {
+        darkBackground('#slidesoffset',false);
+        slideBack = false;
     }
     $('#fade1').animate({opacity:'1'},1200);
     $('#fade2').delay(500).animate({opacity:'1'},1600);
@@ -170,11 +177,18 @@ $(window).scroll(function() {
     } else if (!titleFade) {
         fadeNavBar(true);
     }
-    if ( isVideoVisible() && vidBack ) {
-        videoBackground(false);
+    if ( isVisible('#overviewvid') && vidBack ) {
+        darkBackground('#overviewvid',false);
         vidBack = false;
-    } else if ( !isVideoVisible() && !vidBack ) {
-        videoBackground(true);
+    } else if ( !isVisible('#overviewvid') && !vidBack ) {
+        darkBackground('#overviewvid',true);
         vidBack = true;
+    }
+    if ( isVisible('#slidesoffset') && slideBack ) {
+        darkBackground('#slidesoffset',false);
+        slideBack = false;
+    } else if ( !isVisible('#slidesoffset') && !slideBack ) {
+        darkBackground('#slidesoffset',true);
+        slideBack = true;
     }
 });
