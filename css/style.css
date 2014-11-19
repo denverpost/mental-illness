@@ -119,13 +119,14 @@ section.inset + section.inset {
     margin-top:12em;
 }
 section.inset div.title.lowertitle h1 {
-    margin-top:25%;
-    margin-bottom:15%;
+    margin:15% auto;
     border-bottom:1px solid #aaa;
     padding-bottom:12%;
+    font-size:2.25em;
 }
 section.inset h3.subheading {
     margin-top:2em;
+    font-size:2.05em;
 }
 section.inset p, .reverse li {
     font-family: 'PT Sans', Helvetica, Arial, sans-serif;
@@ -226,7 +227,7 @@ div.title h1 {
     margin:8% 0 35%;
     text-align: center;
     font-family:'PT Sans Narrow', Helvetica, Arial, sans-serif !important;
-    font-size:2.5em;
+    font-size:2.65em;
     font-weight:400;
     line-height:1;
     text-transform:uppercase;
@@ -235,8 +236,11 @@ div.title h1 {
     z-index:-1;
 }
 div.title.lowertitle h1 {
-    margin-top:20%;
-    margin-bottom:20%;
+    font-size:2.75em;
+    margin:20% auto 12%;
+    border-bottom:1px solid #aaa;
+    padding-bottom:8%;
+    width:80%;
 }
 div.title h2 span.titlepart {
     color:#990000;
@@ -327,7 +331,7 @@ p, .row li, .reveal-modal li {
 }
 h3.subheading {
     font-family:'Noticia Text', Georgia, Times, serif;
-    font-size:2.25em;
+    font-size:2.2em;
     font-weight:700;
     display:block;
     text-align:center;
