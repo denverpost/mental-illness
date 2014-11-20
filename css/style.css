@@ -481,7 +481,7 @@ a:hover, * a:hover, a:hover * {
 }
 .gridbox p.gridcaption, .gridcenter p.gridcaption {
     opacity: 0;
-    background:#eee;
+    background:#fff;
     color:#000;
     font-size: 1.8em;
     text-transform: uppercase;
@@ -491,7 +491,7 @@ a:hover, * a:hover, a:hover * {
     width:100%;
     height:100%;
     margin:0;
-    padding:22% 0 0;
+    padding:24% 0 0;
     text-indent:0;
     text-align:center;
     cursor:pointer;
@@ -502,12 +502,12 @@ a:hover, * a:hover, a:hover * {
     line-height: 1.3;
 }
 .gridbox:hover p.gridcaption {
-    opacity:.80;
+    opacity:.60;
 }
 .centerphoto {
     width:100%;
     padding:0;
-    margin:2em 0;
+    margin:2em 0 4em;
 }
 .caption {
   	font-size:.95em;
@@ -516,10 +516,13 @@ a:hover, * a:hover, a:hover * {
     padding:.75em 0 0;
     margin:0;
     font-family:'PT Sans', Helvetica, Arial, sans-serif;
-    font-weight:700;
+    font-weight:400;
     font-style:normal;
     cursor:default; 
     text-indent:0;
+}
+#slidesoffset p.caption {
+    font-size:1em;
 }
 .gridcaption {
     font-size:.85em;
@@ -561,18 +564,27 @@ a:hover, * a:hover, a:hover * {
     top:0;
     right:0;
     height:100%;
-    width:20%;
+    width:15%;
     text-align:left;
     background:rgba(255,255,255,.7);
+    outline:none;
 }
 .centergallery button.slick-prev {
     position:absolute;
     top:0;
     left:0;
     height:100%;
-    width:20%;
+    width:15%;
     text-align:right;
     background:rgba(255,255,255,.7);
+    outline:none;
+}
+#slidesoffset .centergallery button.slick-next,
+#slidesoffset .centergallery button.slick-prev {
+    background:rgba(34,34,34,.9);
+}
+#slidesoffset .centergallery button span {
+    color:rgba(205,205,205,0.8);
 }
 p.splainer {
     font-style:italic;

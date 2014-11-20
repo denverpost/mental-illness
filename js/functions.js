@@ -89,7 +89,7 @@ $('.vid-embed').on("mouseleave", function() {
 $(document).ready(function() {
     $('.centergallery').slick({
         centerMode: true,
-        centerPadding: '20%',
+        centerPadding: '15%',
         slidesToShow: 1,
         prevArrow: '<button type="button" class="slick-prev"><span>&lt;</span></button>',
         nextArrow: '<button type="button" class="slick-next"><span>&gt;</span></button>',
