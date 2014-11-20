@@ -257,12 +257,15 @@ h1, h2, h3, h4 {
   	font-family:'PT Sans Narrow', Helvetica, Arial, sans-serif !important;
   	font-weight:700;
 }
-p, .row li, .reveal-modal li {
+p, .row li, .reveal-modal li, p.lead {
   	color:#333;
     font-size:1.15em;
     line-height:2;
     margin-bottom:1.6em;
     list-style:circle inside;
+}
+p {
+    text-align:justify;
 }
 #credits .row {
     margin-top:2em;
@@ -372,7 +375,9 @@ p.small {
 a, a *, * a, a:visited, a:visited *, * a:visited {
     color:#004646;
 }
-
+p a, p a:visited {
+    text-decoration: underline;
+}
 a:hover, * a:hover, a:hover * {
     color:#990000;
 }
@@ -471,10 +476,11 @@ a:hover, * a:hover, a:hover * {
     left:0;
     bottom:0;
     position:absolute;
-    background-image: -webkit-linear-gradient(top, transparent, white);
-    background-image: -moz-linear-gradient(top, transparent, white);
-    background-image: -ms-linear-gradient(top, transparent, white);
-    background-image: -o-linear-gradient(top, transparent, white);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0.0), rgba(255,255,255,1.0));
+    background: -moz-linear-gradient(top, rgba(255,255,255,0.0), rgba(255,255,255,1.0));
+    background: -ms-linear-gradient(top, rgba(255,255,255,0.0), rgba(255,255,255,1.0));
+    background: -o-linear-gradient(top, rgba(255,255,255,0.0), rgba(255,255,255,1.0));
+    background: linear-gradient(to bottom, rgba(255,255,255,0.0), rgba(255,255,255,1.0));
     display:none;
     opacity:1;
     z-index:99;
@@ -535,6 +541,7 @@ a:hover, * a:hover, a:hover * {
 }
 .caption span.capwarning {
     color:#990000;
+    font-weight:700;
 }
 .centergallery {
     width:100%;
@@ -612,6 +619,7 @@ p.splainer {
 }
 a.startVideo {
     border-bottom:1px solid #444;
+    text-decoration: none;
 }
 a.startVideo:before {
     width:1em;
@@ -626,7 +634,7 @@ a.startVideo:before {
     background-repeat: no-repeat;
 }
 a.startVideo:hover {
-    text-decoration:none;
+    border-bottom:1px solid #900;
 }
 .inset-video-right {
     float:right;
@@ -851,6 +859,9 @@ div#footer-bar ul.social li {
 }
 .chartdiv .state {
     color:rgba(70,130,180,1.0);
+}
+.row ul.doughnut-legend {
+    display:none;
 }
 canvas#funding, canvas#spending {
     width:100%!important;

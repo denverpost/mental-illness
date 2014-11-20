@@ -168,20 +168,24 @@ function createChartThree() {
     }
 }
 
-$('.gridbox').on("click", function() {
-    if ( !$(this).hasClass('expanded') ) {
-        $(this).parent('li').siblings().css('display','none');
-        $(this).parents('ul').removeClass('small-block-grid-3');
-        $(this).find('p.gridcaption').css('display','none');
-        $(this).find('.gridphotograd').css('display','block');
-        $(this).addClass('expanded');
+function swapGridBox(box) {
+    if ( !$(box).hasClass('expanded') ) {
+        $(box).parent('li').siblings().css('display','none');
+        $(box).parents('ul').removeClass('small-block-grid-3');
+        $(box).find('p.gridcaption').css('display','none');
+        $(box).find('.gridphotograd').css('display','block');
+        $(box).addClass('expanded');
     } else {
-        $(this).parent('li').siblings().css('display','block');
-        $(this).parents('ul').addClass('small-block-grid-3');
-        $(this).find('p.gridcaption').css('display','block');
-        $(this).find('.gridphotograd').css('display','none');
-        $(this).removeClass('expanded');
+        $(box).parent('li').siblings().css('display','block');
+        $(box).parents('ul').addClass('small-block-grid-3');
+        $(box).find('p.gridcaption').css('display','block');
+        $(box).find('.gridphotograd').css('display','none');
+        $(box).removeClass('expanded');
     }
+}
+
+$('.gridbox').on("click", function() {
+    swapGridBox(this);
 });
 
 $('.gridprofile').scroll(function(){
@@ -220,7 +224,7 @@ $(document).ready(function() {
     });
 });
 
-var moreAd = false;
+var moreAd = true;
 var titleFade = true;
 var vidBack = true;
 var slideBack = true;
@@ -243,7 +247,15 @@ function hideAdManual() {
 }
 
 $(document).keyup(function(e) {
-  if (!moreAd && e.keyCode == 27) { hideAdManual(); }
+    if ( $('.gridbox.expanded').length ) {
+        $('.gridbox').each(function() {
+            if ( $(this).hasClass('expanded') ) {
+                swapGridBox(this);
+            }
+        });    
+    } else if (!moreAd && e.keyCode == 27) {
+        hideAdManual();
+    }    
 });
 
 function showAd() {
