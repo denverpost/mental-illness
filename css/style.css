@@ -541,10 +541,13 @@ a:hover, * a:hover, a:hover * {
     overflow:hidden;
     display:block;
     position:relative;
-    margin:0 0 4em;
+    margin:4em 0 8em;
 }
 .centergallery .columns {
     padding:0 1.5em;
+}
+.centergallery img {
+    margin-bottom:.5em;
 }
 .centergallery button span {
     font-family:Times, Georgia, serif !important;
