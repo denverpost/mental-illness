@@ -209,14 +209,12 @@ section.inset .inset-video-left {
     font-weight:400;
     font-size:1em;
 }
-.top-bar-section ul li.top-top > a,
-.top-bar .back h5 a {
+.top-bar-section ul li.top-top > a {
     text-transform:uppercase;
     font-size:.9em;
 }
-.top-bar .back a:before {
-    content: "\00ab";
-    margin-right:.25em;
+.top-bar .back h5 {
+    display:none;
 }
 .top-bar-section ul li.social a {
     padding:0 .5em;
@@ -902,7 +900,7 @@ canvas#funding, canvas#spending {
         width:50%;
     }
 }
-@media (max-width:940px) {
+@media (max-width:930px) {
     #logoimg {
         height:1.3em;
     }
@@ -1026,6 +1024,9 @@ canvas#funding, canvas#spending {
     .caption {
         font-size:.85em;
         line-height:1.35;
+    }
+    #themap {
+        display:none;
     }
 }
 @media (max-width:540px) and (orientation:landscape) {
