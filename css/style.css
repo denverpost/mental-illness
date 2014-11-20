@@ -530,6 +530,9 @@ a:hover, * a:hover, a:hover * {
     font-weight:800;
     padding-right:.5em;
 }
+.caption span.capwarning {
+    color:#990000;
+}
 .centergallery {
     width:100%;
     overflow:hidden;
