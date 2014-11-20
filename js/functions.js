@@ -53,6 +53,121 @@ function darkBackground(element, reverse) {
     }
 }
 
+function createChartOne() {
+    var pieData = [{
+        value: 68,
+        color: "#40af49",
+        label: "Medicaid (state and federal)"
+    }, {
+        value: 27,
+        color: "#ac558a",
+        label: "State general funds"
+    }, {
+        value: 2,
+        color: "#f05541",
+        label: "Medicare"
+    }, {
+        value: 1,
+        color: "#faaf3c",
+        label: "Mental health block grant"
+    }, {
+        value: 2,
+        color: "#3ac2d0",
+        label: "Other"
+    }];
+
+    var helpers = Chart.helpers;
+    var funding = new Chart(document.getElementById("funding").getContext("2d")).Doughnut(pieData, {
+        tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>%",
+        animateRotate: true
+    });
+    var legendHolder = document.createElement('div');
+    legendHolder.innerHTML = funding.generateLegend();
+
+    // Include a html legend template after the module doughnut itself
+    helpers.each(legendHolder.firstChild.childNodes, function (legendNode, index) {
+        helpers.addEvent(legendNode, 'mouseover', function () {
+            var activeSegment = funding.segments[index];
+            activeSegment.save();
+            funding.showTooltip([activeSegment]);
+            activeSegment.restore();
+        });
+    });
+    helpers.addEvent(legendHolder.firstChild, 'mouseout', function () {
+        funding.draw();
+    });
+
+    funding.chart.canvas.parentNode.parentNode.appendChild(legendHolder.firstChild);
+}
+
+function createChartTwo() {
+    var pieData = [{
+        value: 78,
+        color: "#40af49",
+        label: "Community-based programs"
+    }, {
+        value: 22,
+        color: "#ac558a",
+        label: "State psychiatric hospitals"
+    }, {
+        value: 1,
+        color: "#f05541",
+        label: "Prevention, research, training and administration"
+    }];
+
+    var helpers = Chart.helpers;
+    var spending = new Chart(document.getElementById("spending").getContext("2d")).Doughnut(pieData, {
+        tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>%",
+        animateRotate: true
+    });
+    var legendHolder = document.createElement('div');
+    legendHolder.innerHTML = spending.generateLegend();
+
+    // Include a html legend template after the module doughnut itself
+    helpers.each(legendHolder.firstChild.childNodes, function (legendNode, index) {
+        helpers.addEvent(legendNode, 'mouseover', function () {
+            var activeSegment = spending.segments[index];
+            activeSegment.save();
+            spending.showTooltip([activeSegment]);
+            activeSegment.restore();
+        });
+    });
+    helpers.addEvent(legendHolder.firstChild, 'mouseout', function () {
+        spending.draw();
+    });
+
+spending.chart.canvas.parentNode.parentNode.appendChild(legendHolder.firstChild);
+}
+
+function createChartThree() {
+    var barChartData = {
+        labels : ["2007","2008","2009","2010","2011","2012"],
+        datasets : [
+            {
+                fillColor : "rgba(190,190,190,0.5)",
+                strokeColor : "rgba(190,190,190,0.8)",
+                highlightFill: "rgba(190,190,190,0.75)",
+                highlightStroke: "rgba(190,190,190,1)",
+                data : [71748,82237,80141,83767,87977,94033]
+            },
+            {
+                fillColor : "rgba(70,130,180,0.5)",
+                strokeColor : "rgba(70,130,180,0.8)",
+                highlightFill: "rgba(70,130,180,0.75)",
+                highlightStroke: "rgba(70,130,180,1)",
+                data : [3401,3880,2608,2040,1635,1956]
+            }
+        ]
+
+    }
+    window.onload = function(){
+        var ctx = document.getElementById("patients").getContext("2d");
+        window.myBar = new Chart(ctx).Bar(barChartData, {
+            responsive : true,
+        });
+    }
+}
+
 $('.gridbox').on("click", function() {
     if ( !$(this).hasClass('expanded') ) {
         $(this).parent('li').siblings().css('display','none');
@@ -162,6 +277,9 @@ $(document).ready(function() {
     }
     $('#fade1').animate({opacity:'1'},1200);
     $('#fade2').delay(500).animate({opacity:'1'},1600);
+    createChartOne();
+    createChartTwo();
+    createChartThree();
 });
 
 $(window).scroll(function() {
@@ -191,4 +309,24 @@ $(window).scroll(function() {
         darkBackground('#slidesoffset',true);
         slideBack = true;
     }
+});
+
+$(function () {
+$('.nav-tabs a').click(function (e) {
+    $(this).tab('show');
+}).on('shown', function (e) {
+    $('.tab-pane.active .footable').trigger('footable_resize');
+});
+if (window.location.hash.length > 0) {
+    $('.nav-tabs a[href="' + window.location.hash + '"]').tab('show');
+}
+});
+$(function () {
+    $('#table-wrapper table').footable();
+    $('.sort-column').click(function (e) {
+        e.preventDefault();
+        var footableSort = $('table').data('footable-sort');
+        var index = $(this).data('index');
+        footableSort.doSort(index, 'toggle');
+    });
 });
