@@ -205,25 +205,6 @@ $('.vid-embed').on("mouseleave", function() {
     $(this).find('.playtext').fadeTo(300, 0);
 });
 
-$(document).ready(function() {
-    $('.centergallery').slick({
-        centerMode: true,
-        centerPadding: '15%',
-        slidesToShow: 1,
-        prevArrow: '<button type="button" class="slick-prev"><span>&lt;</span></button>',
-        nextArrow: '<button type="button" class="slick-next"><span>&gt;</span></button>',
-        responsive: [{
-            breakpoint: 800,
-            settings: {
-                arrows: true,
-                centerMode: true,
-                centerPadding: '8%',
-                slidesToShow: 1
-            }
-        }]
-    });
-});
-
 var moreAd = true;
 var titleFade = true;
 var vidBack = true;
@@ -289,12 +270,35 @@ $(document).ready(function() {
     }
     $('#fade1').animate({opacity:'1'},1200);
     $('#fade2').delay(500).animate({opacity:'1'},1600);
-    createChartOne();
-    createChartTwo();
-    createChartThree();
+    if (window.location.hash.length) {
+        setTimeout(function() {
+            scrollDownTo(window.location.hash, 60);
+        },1000);
+    }
+    setTimeout(function() {
+        createChartOne();
+        createChartTwo();
+        createChartThree();
+    },3000);
 });
 
 $(window).scroll(function() {
+    $('.centergallery').slick({
+        centerMode: true,
+        centerPadding: '15%',
+        slidesToShow: 1,
+        prevArrow: '<button type="button" class="slick-prev"><span>&lt;</span></button>',
+        nextArrow: '<button type="button" class="slick-next"><span>&gt;</span></button>',
+        responsive: [{
+            breakpoint: 800,
+            settings: {
+                arrows: true,
+                centerMode: true,
+                centerPadding: '8%',
+                slidesToShow: 1
+            }
+        }]
+    });
     if ($(window).scrollTop() > (window.innerHeight * 3) ) {
         if (moreAd) {
             showAd();
@@ -329,9 +333,6 @@ $('.nav-tabs a').click(function (e) {
 }).on('shown', function (e) {
     $('.tab-pane.active .footable').trigger('footable_resize');
 });
-if (window.location.hash.length > 0) {
-    $('.nav-tabs a[href="' + window.location.hash + '"]').tab('show');
-}
 });
 $(function () {
     $('#table-wrapper table').footable();

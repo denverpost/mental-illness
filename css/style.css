@@ -155,14 +155,22 @@ section.inset .inset-video-left {
     width:70%;
     padding-right:1.75em;
 }
-.top-bar, .top-bar-section ul,
+.top-bar,
+.top-bar-section ul,
 .top-bar-section ul li,
 .top-bar-section li:not(.has-form) a:not(.button),
-.top-bar-section .dropdown li:not(.has-form) a:not(.button) {
+.top-bar-section .dropdown li:not(.has-form) a:not(.button),
+.top-bar.expanded .title-area,
+.top-bar .top-bar-section .dropdown li {
     background:#fff;
     color:#555;
     font-weight:400;
     font-size:1em;
+}
+.fixed.expanded {
+    -webkit-box-shadow:0px 4px 5px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow:0px 4px 5px rgba(0, 0, 0, 0.25);
+    box-shadow:0px 4px 5px rgba(0, 0, 0, 0.25);
 }
 .top-bar-section li:not(.has-form) a:not(.button):hover,
 .top-bar-section .dropdown li:not(.has-form):hover>a:not(.button),
@@ -173,13 +181,23 @@ section.inset .inset-video-left {
 .top-bar-section .has-dropdown>a:after {
     border-color:rgba(0,0,0,0.4) transparent transparent transparent;
 }
+.top-bar .toggle-topbar.menu-icon a span:after {
+    -webkit-box-shadow: 0 0 0 1px #222, 0 7px 0 1px #222, 0 14px 0 1px #222;
+    -moz-box-shadow: 0 0 0 1px #222, 0 7px 0 1px #222, 0 14px 0 1px #222;
+    box-shadow: 0 0 0 1px #222, 0 7px 0 1px #222, 0 14px 0 1px #222;
+}
+.top-bar-section .divider,
+.top-bar-section [role="separator"] {
+    border-top-color: #ddd;
+}
 .top-bar-section .has-dropdown.hover>.dropdown,
 .top-bar-section .has-dropdown.not-click:hover>.dropdown {
     -webkit-box-shadow:0px 4px 5px rgba(0, 0, 0, 0.25);
     -moz-box-shadow:0px 4px 5px rgba(0, 0, 0, 0.25);
     box-shadow:0px 4px 5px rgba(0, 0, 0, 0.25);
 }
-.top-bar-section>ul>.divider, .top-bar-section>ul>[role="separator"] {
+.top-bar-section>ul>.divider,
+.top-bar-section>ul>[role="separator"] {
     border-right:none;
 }
 .top-bar-section ul li.bottom a {
@@ -191,9 +209,14 @@ section.inset .inset-video-left {
     font-weight:400;
     font-size:1em;
 }
-.top-bar-section ul li.top-top > a {
+.top-bar-section ul li.top-top > a,
+.top-bar .back h5 a {
     text-transform:uppercase;
     font-size:.9em;
+}
+.top-bar .back a:before {
+    content: "\00ab";
+    margin-right:.25em;
 }
 .top-bar-section ul li.social a {
     padding:0 .5em;
@@ -277,9 +300,10 @@ p {
 #credits p strong a {
     color:#222;
     font-weight:700;
+    text-decoration:none;
 }
 #credits p strong a:hover {
-    color:#004646;
+    color:#900;
 }
 #credits .row .columns p:first-child {
     margin-top:.1em;
@@ -839,7 +863,7 @@ div#footer-bar ul.social li {
 .chartdiv.left {
     margin:.5em 1.5em 1.25em 0;
 }
-.chartdiv .chartnote {
+.chartdiv .chartnote h3, .chartdiv .chartnote p {
     text-align:right;
 }
 .chartdiv p {
@@ -901,7 +925,7 @@ canvas#funding, canvas#spending {
     .top-bar-section ul li.social {
         display:inline-block;
         float:left;
-        width:25%;
+        width:33.3%;
     }
     .top-bar-section ul li.social.firstsocial {
         padding-left:0;
