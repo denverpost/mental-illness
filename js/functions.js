@@ -220,7 +220,7 @@ $(document).ready(function() {
     });
 });
 
-var moreAd = true;
+var moreAd = false;
 var titleFade = true;
 var vidBack = true;
 var slideBack = true;

@@ -57,6 +57,9 @@ body {
     content:"\2715";
     text-decoration:none;
 }
+[class*="block-grid-"] {
+    margin:0;
+}
 #fade1, #fade2 { opacity:0; }
 nav.top-bar {
     z-index:99;
@@ -399,9 +402,6 @@ a:hover, * a:hover, a:hover * {
 .twinphoto .photoright .caption {
     padding-right:1em;
 }
-.photogrid {
-    padding:2em 0;
-}
 .photogrid li {
     margin-bottom:0;
     list-style-type: none;
@@ -561,6 +561,9 @@ a:hover, * a:hover, a:hover * {
     -moz-transform:scale(1,8);
     -ms-transform:scale(1,8);
     -o-transform:scale(1,8);
+}
+.centergallery .slick-list {
+    outline:none;
 }
 .centergallery button.slick-next {
     position:absolute;
@@ -853,6 +856,16 @@ canvas#funding, canvas#spending {
     width:100%!important;
     max-width:800px;
     height:auto!important;
+}
+@media (max-width:1240px) {
+    .inset-video-right {
+        margin-right:0;
+        width:50%;
+    }
+    .inset-video-left {
+        margin-left:0;
+        width:50%;
+    }
 }
 @media (max-width:940px) {
     #logoimg {
