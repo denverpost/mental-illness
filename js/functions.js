@@ -56,26 +56,25 @@ function darkBackground(element, reverse) {
 function createChartOne() {
     var pieData = [{
         value: 68,
-        color: "#40af49",
+        color: "rgba(0,70,70,0.75)",
         label: "Medicaid (state and federal)"
     }, {
         value: 27,
-        color: "#ac558a",
+        color: "rgba(0,23,70,0.75)",
         label: "State general funds"
     }, {
         value: 2,
-        color: "#f05541",
+        color: "rgba(23,0,70,0.75)",
         label: "Medicare"
     }, {
         value: 1,
-        color: "#faaf3c",
+        color: "rgba(70,0,70,0.75)",
         label: "Mental health block grant"
     }, {
         value: 2,
-        color: "#3ac2d0",
+        color: "rgba(70,0,47,0.75)",
         label: "Other"
     }];
-
     var helpers = Chart.helpers;
     var funding = new Chart(document.getElementById("funding").getContext("2d")).Doughnut(pieData, {
         tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>%",
@@ -103,18 +102,17 @@ function createChartOne() {
 function createChartTwo() {
     var pieData = [{
         value: 78,
-        color: "#40af49",
-        label: "Community-based programs"
+        color: "rgba(0,70,70,0.75)",
+        label: "Community programs"
     }, {
         value: 22,
-        color: "#ac558a",
-        label: "State psychiatric hospitals"
+        color: "rgba(0,23,70,0.75)",
+        label: "State hospitals"
     }, {
         value: 1,
-        color: "#f05541",
-        label: "Prevention, research, training and administration"
+        color: "rgba(23,0,70,0.75)",
+        label: "Other"
     }];
-
     var helpers = Chart.helpers;
     var spending = new Chart(document.getElementById("spending").getContext("2d")).Doughnut(pieData, {
         tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>%",
@@ -144,28 +142,48 @@ function createChartThree() {
         labels : ["2007","2008","2009","2010","2011","2012"],
         datasets : [
             {
-                fillColor : "rgba(190,190,190,0.5)",
-                strokeColor : "rgba(190,190,190,0.8)",
-                highlightFill: "rgba(190,190,190,0.75)",
-                highlightStroke: "rgba(190,190,190,1)",
+                fillColor : "rgba(0,70,70,0.65)",
+                strokeColor : "rgba(0,70,70,0.8)",
+                highlightFill: "rgba(0,70,70,0.75)",
+                highlightStroke: "rgba(0,70,70,1)",
                 data : [71748,82237,80141,83767,87977,94033]
             },
             {
-                fillColor : "rgba(70,130,180,0.5)",
-                strokeColor : "rgba(70,130,180,0.8)",
-                highlightFill: "rgba(70,130,180,0.75)",
-                highlightStroke: "rgba(70,130,180,1)",
+                fillColor : "rgba(70,0,0,0.65)",
+                strokeColor : "rgba(70,0,0,0.8)",
+                highlightFill: "rgba(70,0,0,0.75)",
+                highlightStroke: "rgba(70,0,0,1)",
                 data : [3401,3880,2608,2040,1635,1956]
             }
         ]
+    }
+    var ctx = document.getElementById("patients").getContext("2d");
+    window.myBar = new Chart(ctx).Bar(barChartData, {
+        responsive : true,
+    });
+}
 
+function createChartFour() {
+    var lineChartData = {
+        labels : ["2005","2006","2007","2008","2009","2010*","2011","2012","2013","2014"],
+        datasets : [
+            {
+                label: "Homeless mental illness",
+                fillColor : "rgba(0,70,70,0.2)",
+                strokeColor : "rgba(0,70,70,1)",
+                pointColor : "rgba(0,70,70,1)",
+                pointStrokeColor : "#fff",
+                pointHighlightFill : "#fff",
+                pointHighlightStroke : "rgba(220,220,220,1)",
+                data : [15.4,18.7,21.1,24.2,28.0,23.7,19.4,20.8,23.1,34.4]
+            }
+        ]
     }
-    window.onload = function(){
-        var ctx = document.getElementById("patients").getContext("2d");
-        window.myBar = new Chart(ctx).Bar(barChartData, {
-            responsive : true,
-        });
-    }
+    var ctx = document.getElementById("homelessline").getContext("2d");
+    window.myLine = new Chart(ctx).Line(lineChartData, {
+        responsive: true,
+        bezierCurve: false
+    });
 }
 
 function swapGridBox(box) {
@@ -279,6 +297,7 @@ $(document).ready(function() {
         createChartOne();
         createChartTwo();
         createChartThree();
+        createChartFour();
     },3000);
 });
 
@@ -327,15 +346,31 @@ $(window).scroll(function() {
     }
 });
 
-$(function () {
-$('.nav-tabs a').click(function (e) {
-    $(this).tab('show');
-}).on('shown', function (e) {
-    $('.tab-pane.active .footable').trigger('footable_resize');
+$('#panel1').on('toggled', function (event, tab) {
+    $('.tabs-content .active table').trigger('footable_resize');
 });
+$('#panel2').on('toggled', function (event, tab) {
+    $('.tabs-content .active table').trigger('footable_resize');
+});
+$('#panel3').on('toggled', function (event, tab) {
+    $('.tabs-content .active table').trigger('footable_resize');
 });
 $(function () {
-    $('#table-wrapper table').footable();
+    $('#panel1 table').footable({
+        breakpoints: {
+            phone: 540,
+        }
+    });
+    $('#panel2 table').footable({
+        breakpoints: {
+            phone: 540,
+        }
+    });
+    $('#panel3 table').footable({
+        breakpoints: {
+            phone: 540,
+        }
+    });
     $('.sort-column').click(function (e) {
         e.preventDefault();
         var footableSort = $('table').data('footable-sort');
