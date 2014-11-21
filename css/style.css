@@ -135,6 +135,9 @@ section.inset p, .reverse li {
     font-family: 'PT Sans', Helvetica, Arial, sans-serif;
     font-size:1.25em;
 }
+section.inset .twinphoto {
+    margin:4em 0;
+}
 section.inset p.caption {
     font-size:1.05em;
 }
@@ -734,6 +737,12 @@ a.startVideo:hover {
     cursor: pointer;
     pointer-events:none;
 }
+#overviewvid .vid-embed-play {
+    border:3px solid rgba(0,0,0,0.8);
+}
+#overviewvid .vid-embed-play .playtext:after, #overviewvid .vid-embed-play .playicon:after {
+    color:rgba(0,0,0,0.8);
+}
 .vid-embed-play .playtext {
     opacity:0;
     padding-top:.2em;
@@ -938,11 +947,17 @@ canvas#homelessline {
     div.title h2 {
         font-size:5em;
     }
-    p, .row li, .reveal-modal li {
+    p, .row li, .reveal-modal li, p.lead {
         color:#333;
-        font-size:1em;
+        font-size:1.1em;
         line-height:1.8;
         margin-bottom:1.25em;
+    }
+    section.inset p.lead:first-letter {
+        margin-top:.2em;
+    }
+    p.lead:first-letter {
+        margin-top:.1em;
     }
     .photorow {
         margin-top:1em;

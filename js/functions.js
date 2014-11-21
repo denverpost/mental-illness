@@ -101,7 +101,7 @@ function createChartOne() {
 
 function createChartTwo() {
     var pieData = [{
-        value: 78,
+        value: 77,
         color: "rgba(0,70,70,0.75)",
         label: "Community programs"
     }, {
@@ -371,6 +371,7 @@ $(function () {
             phone: 540,
         }
     });
+    $('.tabs-content .active table').trigger('footable_resize');
     $('.sort-column').click(function (e) {
         e.preventDefault();
         var footableSort = $('table').data('footable-sort');
