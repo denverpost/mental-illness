@@ -219,7 +219,8 @@ $('.gridbox').on("click", function() {
 $(document).mouseup(function (e)
 {
     var container = $('.gridbox.expanded');
-    if (!container.is(e.target) && container.has(e.target).length === 0)
+    var adWrap = $('#adwrapper');
+    if (!adWrap.is(e.target) && adWrap.has(e.target).length === 0 && !container.is(e.target) && container.has(e.target).length === 0)
     {
         swapGridBox(container);
     }
