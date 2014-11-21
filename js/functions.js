@@ -300,16 +300,18 @@ function getAdSize() {
     if ( $(window).width() >= 740 ) {
         var adSizes = ['ad=medium','728','90'];
         return adSizes;
-    } else if ( $(window).width() >= 300 && $(window).width() < 740 ) {
+    } else {
+        return false;
+    }
+    /*else if ( $(window).width() >= 300 && $(window).width() < 740 ) {
         var adSizes = ['ad=small','300','50'];
         return adSizes;
-    }
+    }*/
 }
 
 function showAd() {
-    console.log('show ad');
-    if (moreAd) {
-        var adSize = getAdSize();
+    var adSize = getAdSize();
+    if (moreAd && adSize) {
         $('#adframewrapper').html('<iframe src="http://extras.denverpost.com/mentalillness/ad.html?' + adSize[0] + '"seamless height="' + adSize[2] + '" width="' + adSize[1] + '" frameborder="0"></iframe>');
         $('#adwrapper').fadeIn(400);
         $('a.boxclose').fadeIn(400);
