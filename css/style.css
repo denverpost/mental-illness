@@ -8,6 +8,23 @@ body {
     z-index:599999;
     top:-45px;
 }
+#scroll-down {
+    width: 0;
+    height: 0;
+    position:fixed;
+    left:50%;
+    bottom:1em;
+    margin-left:-8em;
+    opacity:0;
+    border-left: 8em solid transparent;
+    border-right: 8em solid transparent;
+    border-top-width: 2em;
+    border-top-color: rgba(153,0,0,0.25);
+    border-top-style: solid;
+    border-bottom-width: 0;
+    border-bottom-color: transparent;
+    border-bottom-style: solid;
+}
 #adwrapper {
     position:fixed;
     bottom:0;
