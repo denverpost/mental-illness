@@ -55,7 +55,6 @@
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="./js/vendor/modernizr.js"></script>
     <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
-    <script type="text/javascript" src="//www.googletagservices.com/tag/js/gpt.js"></script>
 </head>
 <body>
 <div id="omniture" style="display:none">
@@ -2320,39 +2319,7 @@
 <div id="adwrapper">
 	<a class="boxclose" href="javascript:void(0)" onclick="hideAdManual();"></a>
 	<center>
-    <div id="top_leaderboard_large" style="margin:5px auto;display:none;">
-        <script type="text/javascript">
-            if ( $(window).width() >= 1000 ) {
-                $('div#top_leaderboard_large').css('display','block');
-                googletag.defineSlot('/8013/denverpost.com/news', [[728,90],[970,90]], 'top_leaderboard_large').setTargeting('kv', 'homelessstudents').addService(googletag.pubads());
-                googletag.pubads().enableSyncRendering();
-                googletag.enableServices();
-                googletag.display('top_leaderboard_large');
-            }
-        </script>
-    </div>
-    <div id="top_leaderboard" style="margin:5px auto;display:none;">
-        <script type="text/javascript">
-            if ( $(window).width() >= 740 && $(window).width() < 1000 ) {
-                $('div#top_leaderboard').css('display','block');
-                googletag.defineSlot('/8013/denverpost.com/news', [[728,90]], 'top_leaderboard').setTargeting('kv', 'homelessstudents').addService(googletag.pubads());
-                googletag.pubads().enableSyncRendering();
-                googletag.enableServices();
-                googletag.display('top_leaderboard');
-            }
-        </script>
-    </div>
-    <div id="div_mobilebanner" style="margin:0 auto;display:none;">
-        <script type="text/javascript">
-            if ( $(window).width() >= 300 && $(window).width() < 740 ) {
-                $('div#div_mobilebanner').css('display','block');
-                googletag.defineSlot('/8013/denverpost.com/news', [[300,50]], 'div_mobilebanner').setTargeting('kv', 'homelessstudents').addService(googletag.pubads());
-                googletag.pubads().enableSyncRendering();
-                googletag.enableServices();
-                googletag.display('div_mobilebanner');
-            }
-        </script>
-    </div>
+	<div id="adframewrapper"></div>
     </center>
 </div>
 
