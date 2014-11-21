@@ -202,7 +202,7 @@ function swapGridBox(box) {
     }
 }
 
-$('.gridbox').on("click", function() {
+$('.gridbox').on("mouseup", function() {
     swapGridBox(this);
 });
 
@@ -268,6 +268,22 @@ function showAd() {
 }
 
 $(document).ready(function() {
+    $('.centergallery').slick({
+        centerMode: true,
+        centerPadding: '15%',
+        slidesToShow: 1,
+        prevArrow: '<button type="button" class="slick-prev"><span>&lt;</span></button>',
+        nextArrow: '<button type="button" class="slick-next"><span>&gt;</span></button>',
+        responsive: [{
+            breakpoint: 800,
+            settings: {
+                arrows: true,
+                centerMode: true,
+                centerPadding: '8%',
+                slidesToShow: 1
+            }
+        }]
+    });
     if ( $(window).scrollTop() > (window.innerHeight / 2) ) {
         if (titleFade) {
             fadeNavBar(false);
@@ -302,22 +318,6 @@ $(document).ready(function() {
 });
 
 $(window).scroll(function() {
-    $('.centergallery').slick({
-        centerMode: true,
-        centerPadding: '15%',
-        slidesToShow: 1,
-        prevArrow: '<button type="button" class="slick-prev"><span>&lt;</span></button>',
-        nextArrow: '<button type="button" class="slick-next"><span>&gt;</span></button>',
-        responsive: [{
-            breakpoint: 800,
-            settings: {
-                arrows: true,
-                centerMode: true,
-                centerPadding: '8%',
-                slidesToShow: 1
-            }
-        }]
-    });
     if ($(window).scrollTop() > (window.innerHeight * 3) ) {
         if (moreAd) {
             showAd();

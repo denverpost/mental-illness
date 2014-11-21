@@ -98,6 +98,11 @@ p.byline {
     font-size:.9em;
     margin-bottom:4em;
 }
+p.bylinebottom {
+    text-align:center;
+    font-size:.9em;
+    margin-bottom:1em;
+}
 #logoimg {
     margin:.0;
     height:1.6em;
@@ -133,7 +138,7 @@ section.inset h3.subheading {
 }
 section.inset p, .reverse li {
     font-family: 'PT Sans', Helvetica, Arial, sans-serif;
-    font-size:1.25em;
+    font-size:1.2em;
 }
 section.inset .twinphoto {
     margin:4em 0;
@@ -145,6 +150,7 @@ section.inset p.lead:first-letter {
     font-size:3.4em;
     line-height:1;
     margin-right:.25em;
+    margin-top:.1em;
 }
 section.inset .inset-video-right {
     float:right;
@@ -621,6 +627,9 @@ a:hover, * a:hover, a:hover * {
     background:rgba(255,255,255,.7);
     outline:none;
 }
+#slidesoffset .centergallery {
+    margin:4em 0;
+}
 #slidesoffset .centergallery button.slick-next,
 #slidesoffset .centergallery button.slick-prev {
     background:rgba(34,34,34,.9);
@@ -635,6 +644,9 @@ p.splainer {
     padding:0 3em;
 }
 /* video */
+.centervideo {
+    margin:4em 0 6em;
+}
 #overviewvid, #slidesoffset {
     clear:both;
     margin-bottom:10%;
@@ -667,12 +679,16 @@ a.startVideo:hover {
 }
 .inset-video-right {
     float:right;
+    margin-top:.5em;
+    margin-bottom:.5em;
     margin-right:-25%;
     width:75%;
     padding-left:1.5em;
 }
 .inset-video-left {
     float:left;
+    margin-top:.5em;
+    margin-bottom:.5em;
     margin-left:-25%;
     width:75%;
     padding-right:1.5em;
@@ -803,6 +819,9 @@ div#footer-bar ul.social li {
     font-size: 1.2em;
     font-weight:700;
     float: left;
+    border-left:1px solid #fff;
+    border-right:1px solid #fff;
+    border-top:3px solid rgba(0,70,70,0.5);
 }
 .tabs dd > a span.icon {
     color: #999;
@@ -817,7 +836,7 @@ div#footer-bar ul.social li {
     color: #990000;
 }
 .tabs dd.active a {
-    border-top: 1px solid rgba(153,0,0,0.5);
+    border-top: 3px solid rgba(153,0,0,0.5);
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     background:#fff;
@@ -884,6 +903,8 @@ div#footer-bar ul.social li {
 }
 .chartdiv .legend ul {
     margin-top:1em;
+    margin-left:1em;
+    margin-right:1em;
 }
 .chartdiv .legend ul li {
     font-size:1.0em;
@@ -906,12 +927,32 @@ canvas#homelessline {
     max-width:800px;
     height:auto!important;
 }
+.chartdiv li.community {
+    background-color:rgba(0,70,70,0.7);
+    color:#fff;
+    display:block;
+    width:100%;
+    list-style-type: none;
+    margin-left:0;
+    padding:0 0 .1em;
+    text-align:center;
+}
+.chartdiv li.state {
+    background-color:rgba(70,0,0,0.7);
+    color:#fff;
+    display:block;
+    width:100%;
+    list-style-type: none;
+    margin-left:0;
+    padding:0 0 .1em;
+    text-align:center;
+}
 @media (max-width:1240px) {
-    .inset-video-right {
+    .inset-video-right, section.inset .inset-video-right {
         margin-right:0;
         width:50%;
     }
-    .inset-video-left {
+    .inset-video-left, section.inset .inset-video-left {
         margin-left:0;
         width:50%;
     }
@@ -919,19 +960,6 @@ canvas#homelessline {
 @media (max-width:930px) {
     #logoimg {
         height:1.3em;
-    }
-    #logosmall {
-        height:1.4em;
-        margin:0 1em 0 0;
-    }
-    div#name2 h1 {
-        font-size:1.4em;
-        line-height:1em;
-        font-weight:300;
-        color:#fff;
-    }
-    .opener {
-        margin-bottom:1em;
     }
     .top-bar-section ul li.social a {
         padding:1em 40%;
@@ -946,6 +974,8 @@ canvas#homelessline {
     }
     div.title h2 {
         font-size:5em;
+        margin-left:5%;
+        margin-right:5%;
     }
     p, .row li, .reveal-modal li, p.lead {
         color:#333;
@@ -1001,15 +1031,37 @@ canvas#homelessline {
         padding:0;
         width:8%;
     }
+    .gridbox p.gridcaption, .gridcenter p.gridcaption {
+        font-size:1.4em;
+    }
 }
 @media (max-width:540px) {
-    .opener2, .opener3 {
-        margin:5em 0 2.5em;
+    div.title h2 {
+        font-size:3.5em;
+    }
+    div.title h1 {
+        font-size:2.25em;
+    }
+    .inset-video-right, section.inset .inset-video-right, .gridprofile .inset-video-right {
+        padding-left:0;
+        padding-right:0;
+        width:100%;
+    }
+    .inset-video-left, section.inset .inset-video-left, .gridprofile .inset-video-left {
+        padding-left:0;
+        padding-right:0;
+        width:100%;
     }
     h3.subheading {
         font-size:1.5em;
         margin:2.5em auto 1.5em;
         width:80%;
+    }
+    section.inset p {
+        font-size:1.1em;
+    }
+    .gridbox p.gridcaption, .gridcenter p.gridcaption {
+        font-size:1em;
     }
     .twinphoto .photoleft {
         width:100%;
@@ -1051,7 +1103,7 @@ canvas#homelessline {
     }
 }
 @media (max-width:540px) and (orientation:landscape) {
-        .infobox p {
+    .infobox p {
         line-height:1.5;
     }
 }
