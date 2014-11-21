@@ -192,6 +192,7 @@ section.inset p.lead:first-letter {
     font-size:3.4em;
     line-height:1;
     margin-right:.25em;
+    margin-top:.1em;
 }
 section.inset .inset-video-right {
     float:right;
