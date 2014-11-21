@@ -158,13 +158,12 @@ section.inset p.lead:first-letter {
     font-size:3.4em;
     line-height:1;
     margin-right:.25em;
-    margin-top:.1em;
 }
 section.inset .inset-video-right {
     float:right;
     margin-right:-20%;
     width:70%;
-    padding-left:2em;
+    margin-left:2em;
     padding-top:1em;
     padding-bottom:1em;
 }
@@ -172,7 +171,7 @@ section.inset .inset-video-left {
     float:left;
     margin-left:-20%;
     width:70%;
-    padding-right:2em;
+    margin-right:2em;
     padding-top:1em;
     padding-bottom:1em;
 }
@@ -637,8 +636,12 @@ a:hover, * a:hover, a:hover * {
     background:rgba(255,255,255,.7);
     outline:none;
 }
+#slidesoffset .lowertitle h1 {
+    padding-bottom:1em;
+    margin:0 auto 1em;
+}
 #slidesoffset .centergallery {
-    margin:4em 0;
+    margin:2em 0 4em;
 }
 #slidesoffset .centergallery button.slick-next,
 #slidesoffset .centergallery button.slick-prev {
@@ -695,7 +698,7 @@ a.startVideo:hover {
     margin-bottom:.5em;
     margin-right:-25%;
     width:75%;
-    padding-left:1.5em;
+    margin-left:1.5em;
 }
 .inset-video-left {
     float:left;
@@ -703,7 +706,7 @@ a.startVideo:hover {
     margin-bottom:.5em;
     margin-left:-25%;
     width:75%;
-    padding-right:1.5em;
+    margin-right:1.5em;
 }
 .gridprofile .inset-video-right {
     width:66.6%;
@@ -995,21 +998,12 @@ canvas#homelessline {
         line-height:1.8;
         margin-bottom:1.25em;
     }
-    section.inset p.lead:first-letter {
-        margin-top:.2em;
-    }
-    p.lead:first-letter {
-        margin-top:.1em;
-    }
     .photorow {
         margin-top:1em;
         margin-bottom:1em;
     }
     .photorow img {
         margin-bottom:.5em;
-    }
-    div#footer-bar ul.social {
-        display:none;
     }
     .reveal-modal a.close-reveal-modal {
         padding:.25em 0 0 .3em;
@@ -1057,11 +1051,15 @@ canvas#homelessline {
     .inset-video-right, section.inset .inset-video-right, .gridprofile .inset-video-right {
         padding-left:0;
         padding-right:0;
+        margin-right:0;
+        margin-left:0;
         width:100%;
     }
     .inset-video-left, section.inset .inset-video-left, .gridprofile .inset-video-left {
         padding-left:0;
         padding-right:0;
+        margin-right:0;
+        margin-left:0;
         width:100%;
     }
     h3.subheading {
@@ -1126,6 +1124,18 @@ canvas#homelessline {
     }
     #themap {
         display:none;
+    }
+    div#footer-bar p.small {
+        max-width:50%;
+        text-align:left;
+    }
+    div#footer-bar ul.social {
+        right:1em;
+        top:.6em;
+        left:auto;
+    }
+    div#footer-bar {
+        padding: .5em 1em .5em;
     }
 }
 @media (max-width:540px) and (orientation:landscape) {

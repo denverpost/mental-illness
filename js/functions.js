@@ -20,7 +20,7 @@ function playerCreator(embedId, playerId, divId) {
     divId = typeof divId !== 'undefined' ? divId : false;
     playerClear = true;
     if (divId) {
-        $(divId).animate({backgroundColor:'rgba(153,0,0,0.4)',paddingLeft:'.5em',paddingRight:'.5em'}, 350).delay(2000).animate({backgroundColor:'transparent',paddingLeft:'0',paddingRight:'0'},1000);
+        $(divId).animate({backgroundColor:'rgba(153,0,0,0.3)',paddingLeft:'.5em',paddingRight:'.5em'}, 350).delay(2000).animate({backgroundColor:'transparent',paddingLeft:'0',paddingRight:'0'},1000);
     }
     OO.Player.create(embedId, playerId, {'autoplay':true});
     setTimeout(function() { playerClear = false; },2000);
@@ -35,10 +35,9 @@ function getNodePosition(node) {
     return Math.abs(eTop - $(window).scrollTop());
 }
 function isVisible(element) {
-    var quarterHeight = $(element).height() / 4;
     var vidTop = $(element).offset().top;
     var vidBot = $(element).offset().top + $(element).height();
-    var fromTop = $(window).scrollTop() + quarterHeight * 2;
+    var fromTop = $(window).scrollTop() + $(element).height() / 2;
     if ( fromTop > vidTop && fromTop < vidBot ) {
         return true;
     } else {
@@ -50,6 +49,7 @@ function darkBackground(element, reverse) {
     if (!reverse) {
         $(element).animate({backgroundColor:'#222'}, 750);
         $(element + ' p.caption').animate({color:'rgba(255,255,255,0.6)'}, 750);
+        $(element + ' .lowertitle h1').animate({color:'rgba(255,255,255,0.6)'}, 750);
         $('.fixed').animate({top:'-45px'},350);
     } else {
         $(element).animate({backgroundColor:'#fff'}, 750);
@@ -372,7 +372,7 @@ $(document).ready(function() {
 $(window).scroll(function() {
     var windowTop = $(window).scrollTop();
     for (var i = 1; i < adTimes.length; i++) {
-        if (adTimes[i] > (windowTop - 50) && adTimes[i] < (windowTop + 50)) {
+        if (adTimes[i] > (windowTop - 20) && adTimes[i] < (windowTop + 20)) {
             hideAdManual();
             moreAd = true;
         }
