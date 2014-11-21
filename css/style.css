@@ -28,7 +28,6 @@ body {
     right:4px;
     width:30px;
     height:30px;
-    cursor:pointer;
     font-family: Helvetica, Arial, sans-serif;
     font-size:28px;
     font-weight:bold;
@@ -45,7 +44,13 @@ body {
 }
 .gridbox.expanded .gridphoto a.boxclose {
     color:#777;
-    display:block;
+    display:block!important;
+}
+.gridbox.expanded .vid-embed-wrap {
+    z-index:90;
+}
+.gridbox.expanded .gridphoto {
+    background-image:none!important;
 }
 #adwrapper a.boxclose:hover {
     color:#333;
@@ -291,7 +296,7 @@ h1, h2, h3, h4 {
   	font-family:'PT Sans Narrow', Helvetica, Arial, sans-serif !important;
   	font-weight:700;
 }
-p, .row li, .reveal-modal li, p.lead {
+p, .reveal-modal li, p.lead {
   	color:#333;
     font-size:1.15em;
     line-height:2;
@@ -400,6 +405,7 @@ p.insetquote span {
     text-align:right;
     display:block;
     font-size:.9em;
+    margin-top:.75em;
 }
 p.small {
     font-size:.7em;
@@ -407,8 +413,9 @@ p.small {
     margin:0;
     font-weight:400;
 }
-a, a *, * a, a:visited, a:visited *, * a:visited {
+a, a *, * a, a:visited, a:visited *, * a:visited, a:active, a:active *, * a:active, a:focus, a:focus *, * a:focus {
     color:#004646;
+    outline:none;
 }
 p a, p a:visited {
     text-decoration: underline;
@@ -524,7 +531,7 @@ a:hover, * a:hover, a:hover * {
     opacity: 0;
     background:#fff;
     color:#000;
-    font-size: 1.8em;
+    font-size: 2em;
     text-transform: uppercase;
     position: absolute;
     top:0;
@@ -539,7 +546,7 @@ a:hover, * a:hover, a:hover * {
     pointer-events:none;
 }
 .gridcenter p.gridcaption {
-    padding-top:19%;
+    padding-top:21%;
     line-height: 1.3;
 }
 .gridbox:hover p.gridcaption {
@@ -661,11 +668,13 @@ p.splainer {
 a.startVideo {
     border-bottom:1px solid #444;
     text-decoration: none;
+    margin-left:.3em;
 }
 a.startVideo:before {
     width:1em;
     padding:0 1.5em 0 0;
     margin-right:.25em;
+    margin-left:.1em;
     display:inline;
     content:'';
     line-height: 1;
@@ -977,7 +986,7 @@ canvas#homelessline {
         margin-left:5%;
         margin-right:5%;
     }
-    p, .row li, .reveal-modal li, p.lead {
+    p, .reveal-modal li, p.lead {
         color:#333;
         font-size:1.1em;
         line-height:1.8;
@@ -1057,11 +1066,20 @@ canvas#homelessline {
         margin:2.5em auto 1.5em;
         width:80%;
     }
+    section.inset h3.subheading {
+        font-size:1.6em;
+    }
     section.inset p {
         font-size:1.1em;
     }
+    #slidesoffset p.caption {
+        font-size:.85em;
+    }    
     .gridbox p.gridcaption, .gridcenter p.gridcaption {
         font-size:1em;
+    }
+    .centervideo {
+        margin:2em 0;
     }
     .twinphoto .photoleft {
         width:100%;
@@ -1098,6 +1116,11 @@ canvas#homelessline {
         font-size:.85em;
         line-height:1.35;
     }
+    p.insetquote {
+        font-size:1.1em;
+        padding-right:1.5em;
+        padding-left:1.5em;
+    }
     #themap {
         display:none;
     }
@@ -1105,5 +1128,39 @@ canvas#homelessline {
 @media (max-width:540px) and (orientation:landscape) {
     .infobox p {
         line-height:1.5;
+    }
+}
+@media (max-width:360px) {
+    div.title h2 {
+        font-size:2.75em;
+    }
+    div.title h1 {
+        font-size:2em;
+    }
+    div.title h1 span.titlepart {
+        display: block;
+    }
+    div.title.lowertitle h1, section.inset div.title.lowertitle h1{
+        width:90%;
+        font-size:1.85em;
+    }
+    p, .reveal-modal li, p.lead {
+        font-size:1em;
+    }
+    .photogrid li {
+        padding:0 .15em .3em;
+    }
+    .gridbox, .gridcenter {
+        padding:.25em;
+    }    
+    .gridbox p.gridcaption, .gridcenter p.gridcaption {
+        font-size:.85em;
+        padding-top:0;
+    }
+    section.inset p {
+        font-size: 1.05em;
+    }
+    section.inset p.caption {
+        font-size: 1em;
     }
 }
