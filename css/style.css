@@ -25,6 +25,23 @@ body {
     border-bottom-color: transparent;
     border-bottom-style: solid;
 }
+.forhelp {
+    border:1px solid #ddd;
+    margin:3em 0 6em;
+}
+.forhelp h3.subheading {
+    margin:1em auto 1em;
+}
+.forhelp ul {
+    margin:0 auto 3em;
+    width:70%;
+}
+.forhelp ul li {
+    list-style-type:none;
+    font-size:1.2em;
+    line-height: 1.7;
+    margin-bottom:.5em;
+}
 #adwrapper {
     position:fixed;
     bottom:0;

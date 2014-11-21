@@ -310,7 +310,7 @@ function showAd() {
     console.log('show ad');
     if (moreAd) {
         var adSize = getAdSize();
-        $('#adframewrapper').html('<iframe src="ad.html?' + adSize[0] + '"seamless height="' + adSize[2] + '" width="' + adSize[1] + '" frameborder="0"></iframe>');
+        $('#adframewrapper').html('<iframe src="http://extras.denverpost.com/mentalillness/ad.html?' + adSize[0] + '"seamless height="' + adSize[2] + '" width="' + adSize[1] + '" frameborder="0"></iframe>');
         $('#adwrapper').fadeIn(400);
         $('a.boxclose').fadeIn(400);
         var adH = $('#adwrapper').height();
