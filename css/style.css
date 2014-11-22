@@ -496,6 +496,10 @@ a:hover, * a:hover, a:hover * {
     margin:.25em;
     border:1px solid #ccc;
     padding:.5em;
+    cursor:pointer;
+}
+.gridbox.expanded {
+    cursor:auto;
 }
 .gridbox.expanded .gridphoto {
     pointer-events:auto;
