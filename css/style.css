@@ -58,6 +58,7 @@ body {
 }
 #adwrapper #adframewrapper {
     margin:4px auto;
+    overflow:hidden;
 }
 #adwrapper a.boxclose, .gridbox.expanded .gridphoto a.boxclose {
     position:absolute;
