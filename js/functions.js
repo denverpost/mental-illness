@@ -380,11 +380,6 @@ $(document).ready(function() {
         $('#scroll-down').delay(1400).animate({opacity:'1'},1400);
         scrollvis = true;
     }
-    if (window.location.hash.length) {
-        setTimeout(function() {
-            scrollDownTo(window.location.hash, 60);
-        },1000);
-    }
     setTimeout(function() {
         createChartOne();
         createChartTwo();
