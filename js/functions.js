@@ -14,26 +14,33 @@ function scrollDownTo(whereToScroll, scrollOffset) {
     }, 300);
 }
 
-var playerClear = false;
+var playedVideos = [];
 
 function playerCreator(embedId, playerId, divId) {
     divId = typeof divId !== 'undefined' ? divId : false;
-    playerClear = true;
-    if (divId) {
-        $(divId).animate({backgroundColor:'rgba(153,0,0,0.3)',paddingLeft:'.5em',paddingRight:'.5em'}, 350).delay(2000).animate({backgroundColor:'transparent',paddingLeft:'0',paddingRight:'0'},1000);
+    if (playedVideos.indexOf(playerId) == -1) {
+        playedVideos.push(playerId);
+        $('#' + embedId).html('<video id="'+embedId+'player" preload controls autoplay> \n\
+            <source src="./video/'+playerId+'.mp4" /> \n\
+            <source src="./video/'+playerId+'.webm" /> \n\
+        </video>');
+        $('#' + embedId).css('cursor','default');
     }
-    OO.Player.create(embedId, playerId, {'autoplay':true});
-    setTimeout(function() { playerClear = false; },2000);
 }
 
 function playerScroller(embedId, playerId, divId) {
+    if (divId) {
+        $(divId).animate({backgroundColor:'rgba(153,0,0,0.3)',paddingLeft:'.5em',paddingRight:'.5em'}, 350).delay(2000).animate({backgroundColor:'transparent',paddingLeft:'0',paddingRight:'0'},1000);
+    }
     scrollDownTo(('#' + embedId),100);
     playerCreator(embedId, playerId, divId);
 }
+
 function getNodePosition(node) {
     var eTop = $(node).offset().top;
     return Math.abs(eTop - $(window).scrollTop());
 }
+
 function isVisible(element) {
     var vidTop = $(element).offset().top;
     var vidBot = $(element).offset().top + $(element).height();
@@ -163,10 +170,10 @@ function createChartThree() {
                 data : [3401,3880,2608,2040,1635,1956]
             }
         ]
-    }
+    };
     var ctx = document.getElementById("patients").getContext("2d");
     window.myBar = new Chart(ctx).Bar(barChartData, {
-        responsive : true,
+        responsive: true,
     });
 }
 
@@ -204,7 +211,6 @@ function swapGridBox(box) {
         $(box).addClass('expanded');
         scrollDownTo('#profiles');
         document.body.style.overflow='hidden';
-        playerClear = false;
         gridOpen = true;
     } else if (!playerClear) {
         $(box).parent('li').siblings().css('display','block');
@@ -212,8 +218,8 @@ function swapGridBox(box) {
         $(box).find('p.gridcaption').css('display','block');
         $(box).find('.gridphotograd').css('display','none');
         $(box).removeClass('expanded');
+        $(box).find('video').trigger('pause');
         document.body.style.overflow='auto';
-        playerClear = false;
         gridOpen = false;
     }
 }
@@ -269,6 +275,7 @@ $('.vid-embed').on("mouseleave", function() {
 var moreAd = true;
 var titleFade = true;
 var vidBack = true;
+var vidPaused = false;
 var scrollvis = false;
 var slideBack = true;
 
@@ -309,10 +316,6 @@ function getAdSize() {
     } else {
         return false;
     }
-    /*else if ( $(window).width() >= 300 && $(window).width() < 740 ) {
-        var adSizes = ['ad=small','300','50'];
-        return adSizes;
-    }*/
 }
 
 function showAd() {
@@ -333,11 +336,9 @@ function getAdTimes() {
     var innerHeight = (window.innerHeight * 3);
     var adReturns = [Math.round(innerHeight), Math.round(innerHeight + chunkHeight), Math.round(innerHeight + chunkHeight * 2), Math.round(innerHeight + chunkHeight * 3),  Math.round(innerHeight + chunkHeight * 4)];
     return adReturns;
-
 }
 
 var adTimes = getAdTimes();
-console.log(adTimes);
 
 $(document).ready(function() {
     $('.centergallery').slick({
@@ -388,43 +389,57 @@ $(document).ready(function() {
     },3000);
 });
 
+var didScroll = false;
+
 $(window).scroll(function() {
-    if (scrollvis) {
-        $('#scroll-down').animate({opacity:'0'},800);
-    }
-    for (var i = 1; i < adTimes.length; i++) {
-        if (adTimes[i] > ($(window).scrollTop() - 35) && adTimes[i] < ($(window).scrollTop() + 35)) {
-            hideAdManual();
-            moreAd = true;
-        }
-    }
-    if ($(window).scrollTop() > adTimes[0] ) {
-        if (moreAd) {
-            showAd();
-        }
-    }
-    if ( $(window).scrollTop() > (window.innerHeight / 2) ) {
-        if (titleFade) {
-            fadeNavBar(false);
-        }
-    } else if (!titleFade) {
-        fadeNavBar(true);
-    }
-    if ( isVisible('#overviewvid') && vidBack ) {
-        darkBackground('#overviewvid',false);
-        vidBack = false;
-    } else if ( !isVisible('#overviewvid') && !vidBack ) {
-        darkBackground('#overviewvid',true);
-        vidBack = true;
-    }
-    if ( isVisible('#slidesoffset') && slideBack ) {
-        darkBackground('#slidesoffset',false);
-        slideBack = false;
-    } else if ( !isVisible('#slidesoffset') && !slideBack ) {
-        darkBackground('#slidesoffset',true);
-        slideBack = true;
-    }
+    didScroll = true;
 });
+
+setInterval(function() {
+    if (didScroll) {
+        if (scrollvis) {
+            $('#scroll-down').animate({opacity:'0'},800);
+        }
+        for (var i = 1; i < adTimes.length; i++) {
+            if (adTimes[i] > ($(window).scrollTop() - 35) && adTimes[i] < ($(window).scrollTop() + 35)) {
+                hideAdManual();
+                moreAd = true;
+            }
+        }
+        if ($(window).scrollTop() > adTimes[0] ) {
+            if (moreAd) {
+                showAd();
+            }
+        }
+        if ( $(window).scrollTop() > (window.innerHeight / 2) ) {
+            if (titleFade) {
+                fadeNavBar(false);
+            }
+        } else if (!titleFade) {
+            fadeNavBar(true);
+        }
+        if ( isVisible('#overviewvid') && vidBack ) {
+            darkBackground('#overviewvid',false);
+            if (vidPaused) {
+                $('#overviewvid video').trigger('play');
+                vidPaused = false;
+            }
+            vidBack = false;
+        } else if ( !isVisible('#overviewvid') && !vidBack ) {
+            darkBackground('#overviewvid',true);
+            $('#overviewvid video').trigger('pause');
+            vidPaused = true;
+            vidBack = true;
+        }
+        if ( isVisible('#slidesoffset') && slideBack ) {
+            darkBackground('#slidesoffset',false);
+            slideBack = false;
+        } else if ( !isVisible('#slidesoffset') && !slideBack ) {
+            darkBackground('#slidesoffset',true);
+            slideBack = true;
+        }
+    }
+},250);
 
 $('#panel1').on('toggled', function (event, tab) {
     $('.tabs-content .active table').trigger('footable_resize');
