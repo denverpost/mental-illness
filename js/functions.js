@@ -292,6 +292,7 @@ $('.vid-embed').on("mouseleave", function() {
 });
 
 var moreAd = true;
+var adShowing = false;
 var titleFade = true;
 var vidBack = true;
 var vidPaused = false;
@@ -314,18 +315,18 @@ function hideAdManual() {
     $('#footer-bar').delay(150).animate({marginBottom:'0'},300);
     $('#adframewrapper').html('');
     moreAd = false;
+    adShowing = false;
 }
 
 $(document).keyup(function(e) {
-    if ( $('.gridbox.expanded').length ) {
-        $('.gridbox').each(function() {
-            if ( $(this).hasClass('expanded') ) {
-                swapGridBox(this);
-            }
-        });    
-    } else if (!moreAd && e.keyCode == 27) {
+    if (adShowing && e.keyCode == 27) {
         hideAdManual();
-    }    
+        return false;
+    }
+    if (gridOpen && e.keyCode == 27) {
+        console.log('here');
+        swapGridBox($('.gridbox.expanded'));
+    }
 });
 
 function getAdSize() {
@@ -346,6 +347,7 @@ function showAd() {
         var adH = $('#adwrapper').height();
         $('#footer-bar').css('margin-bottom',adH);
         moreAd = false;
+        adShowing = true;
     }
 }
 
