@@ -84,6 +84,9 @@ body {
     color:#777;
     display:block!important;
 }
+.gridbox.expanded {
+    pointer-events:none;
+}
 .gridbox.expanded .vid-embed-wrap {
     z-index:90;
 }

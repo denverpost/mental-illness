@@ -209,32 +209,51 @@ function swapGridBox(box) {
         $(box).find('p.gridcaption').css('display','none');
         $(box).find('.gridphotograd').css('display','block');
         $(box).addClass('expanded');
+        $(box).removeClass('clickable');
         scrollDownTo('#profiles');
         document.body.style.overflow='hidden';
         gridOpen = true;
-    } else if (!playerClear) {
+    } else {
         $(box).parent('li').siblings().css('display','block');
         $(box).parents('ul').addClass('small-block-grid-3');
         $(box).find('p.gridcaption').css('display','block');
         $(box).find('.gridphotograd').css('display','none');
         $(box).removeClass('expanded');
+        $(box).addClass('clickable');
         $(box).find('video').trigger('pause');
         document.body.style.overflow='auto';
         gridOpen = false;
     }
 }
 
-$('.gridbox').on("click", function() {
-    swapGridBox(this);
+$('.gridbox.clickable').on("click", function(e) {
+    if (!gridOpen && e.target == this) {
+        swapGridBox(this);
+    }
 });
 
-$(document).mouseup(function (e)
-{
+$('.gridbox.expanded').on("click", function(e) {
+    if (gridOpen && e.target == this) {
+        swapGridBox(this);
+    }
+});
+
+$('.gridbox .boxclose').on("click", function(e) {
+    var parent = $(this).closest('.gridbox');
+    if (gridOpen && $(parent).hasClass('expanded') ) {
+        swapGridBox(parent);
+    }
+});
+
+$('body').on("click", function(e) {
     if (gridOpen) {
         var container = $('.gridbox.expanded');
         var adWrap = $('#adwrapper');
-        if (!adWrap.is(e.target) && adWrap.has(e.target).length === 0 && !container.is(e.target) && container.has(e.target).length === 0)
-        {
+        var video = $('.gridbox.expanded .vid-embed-wrap');
+        if ( !adWrap.is(e.target) && adWrap.has(e.target).length === 0
+            && !container.is(e.target) && container.has(e.target).length === 0
+            && !video.is(e.target) && video.has(e.target).length === 0
+            && (e.target != $('html').get(0) ) ) {
             swapGridBox(container);
         }
     }
